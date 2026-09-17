@@ -1,0 +1,31 @@
+# WordPress core (managed by WP-CLI, not tracked)
+wp-admin/
+wp-includes/
+wp-*.php
+!wp-config.php
+index.php
+xmlrpc.php
+license.txt
+readme.html
+
+# SQLite database
+wp-content/database/
+wp-content/*.sqlite
+wp-content/db.php
+
+# Plugin/theme downloads (managed by WP-CLI)
+wp-content/plugins/elementor/
+wp-content/plugins/contact-form-7/
+wp-content/plugins/sqlite-database-integration/
+wp-content/themes/hello-elementor/
+
+# Uploads and cache
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+
+# Debug log
+wp-content/debug.log
+
+# Hero video (too large for git)
+wp-content/themes/oem-yacht-child/assets/hero-bg.mov

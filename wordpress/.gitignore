@@ -14,10 +14,9 @@ wp-content/*.sqlite
 wp-content/db.php
 
 # Plugin/theme downloads (managed by WP-CLI)
-wp-content/plugins/elementor/
-wp-content/plugins/contact-form-7/
-wp-content/plugins/sqlite-database-integration/
+wp-content/plugins/
 wp-content/themes/hello-elementor/
+wp-content/themes/twentytwenty*/
 
 # Uploads and cache
 wp-content/uploads/

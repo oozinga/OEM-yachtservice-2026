@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap">
+  <script src="./image-slot.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #fff; }
+    a { color: #E40034; text-decoration: none; }
+    a:hover { opacity: .72; }
+    ::selection { background: #E40034; color: #fff; }
+  </style>
+</helmet>
+
+<div style="--oem-red:#E40034;--oem-red-deep:#B5002A;--oem-charcoal:#4D4D54;--oem-charcoal-70:#7A7A82;--oem-charcoal-50:#A4A4AA;--oem-charcoal-30:#C9C9CD;--oem-charcoal-10:#ECECEE;--oem-ink:#1B1B1F;--oem-paper:#F6F6F7;font-family:'Source Sans 3',Arial,sans-serif;color:#1B1B1F;background:#fff;">
+
+  <!-- ============ NAV ============ -->
+  <header style="position:sticky;top:0;z-index:60;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--oem-charcoal-10);">
+    <div style="width:100%;max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;align-items:center;gap:32px;">
+      <a href="#/" style="display:flex;flex-shrink:0;">
+        <img src="assets/logo-red.png" alt="OEM Yacht Service" style="height:34px;display:block;">
+      </a>
+      <nav style="display:flex;gap:24px;align-items:center;" onMouseLeave="{{ closeMenu }}">
+        <a href="#/" style="font:600 14px 'Source Sans 3';color:{{ homeColor }};">Home</a>
+
+        <div style="position:relative;" onMouseEnter="{{ hoverWwd }}">
+          <a href="#/what-we-do" style="font:600 14px 'Source Sans 3';color:{{ wwdColor }};display:inline-flex;align-items:center;gap:5px;">
+            What we do
+            <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:var(--oem-charcoal-70);stroke-width:2;fill:none;"><path d="M6 9l6 6 6-6"></path></svg>
+          </a>
+          <sc-if value="{{ menuWwd }}">
+            <div style="position:absolute;top:30px;left:-12px;background:#fff;border:1px solid var(--oem-charcoal-30);border-radius:6px;box-shadow:0 12px 32px rgba(27,27,31,.12);min-width:280px;padding:8px;display:flex;flex-direction:column;">
+              <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+                <a href="{{ s.href }}" style="padding:9px 12px;font:400 14px 'Source Sans 3';color:var(--oem-ink);border-radius:4px;">{{ s.nav }}</a>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+
+        <a href="#/oem-connect" style="font:600 14px 'Source Sans 3';color:{{ connectColor }};">OEM Connect</a>
+
+        <div style="position:relative;" onMouseEnter="{{ hoverProj }}">
+          <a href="#/projects" style="font:600 14px 'Source Sans 3';color:{{ projColor }};display:inline-flex;align-items:center;gap:5px;">
+            Projects
+            <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:var(--oem-charcoal-70);stroke-width:2;fill:none;"><path d="M6 9l6 6 6-6"></path></svg>
+          </a>
+          <sc-if value="{{ menuProj }}">
+            <div style="position:absolute;top:30px;left:-12px;background:#fff;border:1px solid var(--oem-charcoal-30);border-radius:6px;box-shadow:0 12px 32px rgba(27,27,31,.12);min-width:340px;padding:8px;display:grid;grid-template-columns:1fr 1fr;">
+              <sc-for list="{{ projects }}" as="p" hint-placeholder-count="8">
+                <a href="{{ p.href }}" style="padding:9px 12px;font:400 14px 'Source Sans 3';color:var(--oem-ink);border-radius:4px;">{{ p.nav }}</a>
+              </sc-for>
+              <a href="#/projects" style="padding:9px 12px;font:600 14px 'Source Sans 3';color:var(--oem-red);border-radius:4px;">Other Projects</a>
+            </div>
+          </sc-if>
+        </div>
+
+        <a href="#/careers" style="font:600 14px 'Source Sans 3';color:{{ careersColor }};">Careers</a>
+
+        <div style="position:relative;" onMouseEnter="{{ hoverAbout }}">
+          <a href="#/team" style="font:600 14px 'Source Sans 3';color:{{ aboutColor }};display:inline-flex;align-items:center;gap:5px;">
+            About
+            <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:var(--oem-charcoal-70);stroke-width:2;fill:none;"><path d="M6 9l6 6 6-6"></path></svg>
+          </a>
+          <sc-if value="{{ menuAbout }}">
+            <div style="position:absolute;top:30px;left:-12px;background:#fff;border:1px solid var(--oem-charcoal-30);border-radius:6px;box-shadow:0 12px 32px rgba(27,27,31,.12);min-width:170px;padding:8px;display:flex;flex-direction:column;">
+              <a href="#/team" style="padding:9px 12px;font:400 14px 'Source Sans 3';color:var(--oem-ink);border-radius:4px;">Team</a>
+              <a href="#/team-sub" style="padding:9px 12px;font:400 14px 'Source Sans 3';color:var(--oem-ink);border-radius:4px;">Team Sub</a>
+            </div>
+          </sc-if>
+        </div>
+
+        <a href="#/contact" style="font:600 14px 'Source Sans 3';color:{{ contactColor }};">Contact</a>
+      </nav>
+      <div style="flex:1;"></div>
+      <a href="#/contact" style="font:600 13.5px 'Source Sans 3';background:var(--oem-red);color:#fff;border-radius:4px;padding:10px 18px;flex-shrink:0;">Contact</a>
+    </div>
+  </header>
+
+  <!-- ============ HOME ============ -->
+  <sc-if value="{{ isHome }}">
+    <main>
+      <section style="position:relative;min-height:640px;color:#fff;display:flex;align-items:flex-end;padding:96px 0 88px;background:var(--oem-ink);overflow:hidden;">
+        <video src="assets/hero-bg.mov" autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video>
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,27,31,.58) 0%,rgba(27,27,31,.25) 35%,rgba(27,27,31,.92) 100%);"></div>
+        
+        <div style="position:relative;width:100%;max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);">
+          <div style="display:inline-flex;align-items:center;gap:12px;font:700 12px 'Source Sans 3';letter-spacing:.14em;text-transform:uppercase;color:var(--oem-red);margin-bottom:22px;">
+            <span style="width:32px;height:2px;background:var(--oem-red);"></span>OEM Yacht Service
+          </div>
+          <h1 style="font:700 clamp(38px,5.4vw,66px)/1.06 'Source Sans 3';letter-spacing:-.015em;max-width:760px;margin:0 0 22px;color:#fff;">Independent yacht support. <span style="color:var(--oem-red);">OEM-grade</span> knowledge.</h1>
+          <p style="font:300 20px/1.5 'Source Sans 3';color:rgba(255,255,255,.85);max-width:520px;margin:0 0 36px;">Service, refit and control technology for superyachts, delivered from Bolsward, Barcelona and Fort Lauderdale.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="#/contact" style="font:600 14px 'Source Sans 3';padding:15px 24px;border-radius:4px;background:var(--oem-red);color:#fff;display:inline-flex;align-items:center;gap:8px;">Request a survey
+              <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#fff;stroke-width:2;fill:none;"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </a>
+            <a href="#/oem-connect" style="font:600 14px 'Source Sans 3';padding:15px 24px;border-radius:4px;color:#fff;border:1px solid rgba(255,255,255,.4);">OEM Connect</a>
+          </div>
+        </div>
+      </section>
+
+      <section style="border-bottom:1px solid var(--oem-charcoal-10);">
+        <div style="max-width:1240px;margin:0 auto;padding:56px clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;">
+          <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="width:32px;height:32px;" dangerouslySetInnerHTML="{{ p.iconHtml }}"></div>
+              <h3 style="font:700 19px/1.25 'Source Sans 3';margin:0;">{{ p.title }}</h3>
+              <p style="font:400 14.5px/1.55 'Source Sans 3';color:var(--oem-charcoal);margin:0;">{{ p.desc }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <section style="background:var(--oem-paper);padding:96px 0;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);">
+          <div style="max-width:680px;margin-bottom:48px;">
+            <div style="display:inline-flex;align-items:center;gap:12px;font:700 12px 'Source Sans 3';letter-spacing:.14em;text-transform:uppercase;color:var(--oem-red);margin-bottom:16px;">
+              <span style="width:32px;height:2px;background:var(--oem-red);"></span>01 — WHAT WE DO
+            </div>
+            <h2 style="font:700 clamp(30px,3.6vw,42px)/1.1 'Source Sans 3';letter-spacing:-.012em;margin:0;">Equipment we build, install and maintain.</h2>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;">
+            <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+              <a href="{{ s.href }}" style="background:#fff;border:1px solid var(--oem-charcoal-10);border-radius:6px;padding:26px 24px;display:flex;flex-direction:column;gap:14px;color:var(--oem-ink);min-height:200px;" style-hover="box-shadow:0 8px 24px rgba(27,27,31,.08);border-color:var(--oem-charcoal-30);opacity:1;">
+                <div style="width:34px;height:34px;" dangerouslySetInnerHTML="{{ s.iconHtml }}"></div>
+                <h3 style="margin:0;font:700 18px/1.25 'Source Sans 3';">{{ s.title }}</h3>
+                <p style="margin:0;font:400 14px/1.55 'Source Sans 3';color:var(--oem-charcoal);flex:1;">{{ s.short }}</p>
+                <span style="font:600 13px 'Source Sans 3';color:var(--oem-red);">{{ s.linkLabel }}</span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding:96px 0;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px;">
+            <div style="max-width:680px;">
+              <div style="display:inline-flex;align-items:center;gap:12px;font:700 12px 'Source Sans 3';letter-spacing:.14em;text-transform:uppercase;color:var(--oem-red);margin-bottom:16px;">
+                <span style="width:32px;height:2px;background:var(--oem-red);"></span>02 — PROJECTS
+              </div>
+              <h2 style="font:700 clamp(30px,3.6vw,42px)/1.1 'Source Sans 3';letter-spacing:-.012em;margin:0;">Selected refits and installations.</h2>
+            </div>
+            <a href="#/projects" style="font:600 14px 'Source Sans 3';border-bottom:1px solid currentColor;">All projects</a>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;">
+            <sc-for list="{{ homeProjects }}" as="p" hint-placeholder-count="4">
+              <a href="{{ p.href }}" style="background:#fff;border:1px solid var(--oem-charcoal-10);border-radius:6px;overflow:hidden;color:var(--oem-ink);display:block;">
+                <image-slot id="{{ p.slotId }}" shape="rect" placeholder="Project photo" style="width:100%;height:180px;"></image-slot>
+                <div style="padding:16px;">
+                  <div style="font:700 11px 'Source Sans 3';letter-spacing:.1em;text-transform:uppercase;color:var(--oem-charcoal-70);margin-bottom:6px;">{{ p.tag }}</div>
+                  <h4 style="margin:0;font:600 16px/1.3 'Source Sans 3';">{{ p.title }}</h4>
+                </div>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <section style="background:var(--oem-ink);color:#fff;padding:88px 0;position:relative;overflow:hidden;">
+        
+        <div style="position:relative;max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:center;">
+          <div>
+            <div style="display:inline-flex;align-items:center;gap:12px;font:700 12px 'Source Sans 3';letter-spacing:.14em;text-transform:uppercase;color:var(--oem-red);margin-bottom:16px;">
+              <span style="width:32px;height:2px;background:var(--oem-red);"></span>OEM CONNECT
+            </div>
+            <h2 style="font:700 clamp(28px,3.4vw,40px)/1.12 'Source Sans 3';margin:0 0 18px;color:#fff;">Remote diagnostics on the equipment we built.</h2>
+            <p style="font:300 18px/1.55 'Source Sans 3';color:rgba(255,255,255,.82);margin:0 0 30px;max-width:460px;">Every crane, passerelle and hull door we deliver can be monitored and diagnosed remotely, wherever the yacht is berthed.</p>
+            <a href="#/oem-connect" style="font:600 14px 'Source Sans 3';padding:14px 24px;border-radius:4px;background:var(--oem-red);color:#fff;display:inline-block;">About OEM Connect</a>
+          </div>
+          <div style="display:grid;gap:1px;background:rgba(255,255,255,.12);">
+            <sc-for list="{{ connectStats }}" as="c" hint-placeholder-count="3">
+              <div style="background:var(--oem-ink);padding:22px 24px;">
+                <div style="font:700 32px 'Source Sans 3';color:#fff;">{{ c.value }}</div>
+                <div style="font:400 14px 'Source Sans 3';color:rgba(255,255,255,.62);">{{ c.label }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <!-- ============ WHAT WE DO — INDEX ============ -->
+  <sc-if value="{{ isServiceIndex }}">
+    <main>
+      <section style="background:var(--oem-paper);padding:80px 0 64px;border-bottom:1px solid var(--oem-charcoal-10);">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);">
+          <div style="display:inline-flex;align-items:center;gap:12px;font:700 12px 'Source Sans 3';letter-spacing:.14em;text-transform:uppercase;color:var(--oem-red);margin-bottom:18px;">
+            <span style="width:32px;height:2px;background:var(--oem-red);"></span>WHAT WE DO
+          </div>
+          <h1 style="font:700 clamp(34px,4.6vw,56px)/1.06 'Source Sans 3';letter-spacing:-.015em;margin:0 0 18px;max-width:820px;">Six disciplines, one service organisation.</h1>
+          <p style="font:300 20px/1.5 'Source Sans 3';color:var(--oem-charcoal);max-width:600px;margin:0;">Control systems, hydraulics and mechanics, plus the deck equipment they drive. Specified, built and serviced by the same engineers.</p>
+        </div>
+      </section>
+      <section style="padding:72px 0 96px;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;">
+          <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+            <a href="{{ s.href }}" style="background:#fff;border:1px solid var(--oem-charcoal-10);border-radius:6px;padding:26px 24px;display:flex;flex-direction:column;gap:14px;color:var(--oem-ink);min-height:230px;" style-hover="box-shadow:0 8px 24px rgba(27,27,31,.08);border-color:var(--oem-charcoal-30);opacity:1;">
+              <div style="width:34px;height:34px;" dangerouslySetInnerHTML="{{ s.iconHtml }}"></div>
+              <h3 style="margin:0;font:700 18px/1.25 'Source Sans 3';">{{ s.title }}</h3>
+              <p style="margin:0;font:400 14px/1.55 'Source Sans 3';color:var(--oem-charcoal);flex:1;">{{ s.short }}</p>
+              <span style="font:600 13px 'Source Sans 3';color:var(--oem-red);">{{ s.linkLabel }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <!-- ============ WHAT WE DO — DETAIL ============ -->
+  <sc-if value="{{ isServiceDetail }}">
+    <main>
+      <section style="background:var(--oem-paper);padding:36px 0 64px;border-bottom:1px solid var(--oem-charcoal-10);">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);">
+          <div style="font:400 13px 'Source Sans 3';color:var(--oem-charcoal-70);margin-bottom:34px;">
+            <a href="#/what-we-do" style="color:var(--oem-charcoal);">What we do</a> / {{ service.title }}
+          </div>
+          <div style="display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:end;">
+            <div>
+              <div style="display:inline-flex;align-items:center;gap:12px;font:700 12px 'Source Sans 3';letter-spacing:.14em;text-transform:uppercase;color:var(--oem-red);margin-bottom:18px;">
+                <span style="width:32px;height:2px;background:var(--oem-red);"></span>{{ service.eyebrow }}
+              </div>
+              <h1 style="font:700 clamp(32px,4.2vw,50px)/1.07 'Source Sans 3';letter-spacing:-.015em;margin:0 0 18px;">{{ service.headline }}</h1>
+              <p style="font:300 20px/1.5 'Source Sans 3';color:var(--oem-charcoal);max-width:540px;margin:0;">{{ service.intro }}</p>
+            </div>
+            <image-slot id="{{ service.slotId }}" shape="rect" placeholder="Equipment photo" style="width:100%;height:280px;"></image-slot>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding:80px 0;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;">
+          <div>
+            <h2 style="font:700 26px/1.2 'Source Sans 3';margin:0 0 24px;">Scope of work</h2>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <sc-for list="{{ service.scope }}" as="row" hint-placeholder-count="5">
+                <div style="display:flex;gap:12px;align-items:flex-start;">
+                  <span style="width:16px;height:2px;background:var(--oem-red);margin-top:10px;flex-shrink:0;"></span>
+                  <span style="font:400 15.5px/1.55 'Source Sans 3';color:var(--oem-charcoal);">{{ row }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div>
+            <h2 style="font:700 26px/1.2 'Source Sans 3';margin:0 0 24px;">Specification</h2>
+            <div style="border-top:1px solid var(--oem-charcoal-10);">
+              <sc-for list="{{ service.specs }}" as="row" hint-placeholder-count="4">
+                <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:20px;padding:14px 0;border-bottom:1px solid var(--oem-charcoal-10);">
+                  <span style="font:600 13.5px 'Source Sans 3';letter-spacing:.02em;text-transform:uppercase;color:var(--oem-charcoal-70);">{{ row.k }}</span>
+                  <span style="font:400 15px/1.45 'Source Sans 3';color:var(--oem-ink);">{{ row.v }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style="background:var(--oem-paper);padding:80px 0;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);">
+          <h2 style="font:700 26px/1.2 'Source Sans 3';margin:0 0 32px;">Also in What we do</h2>
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;">
+            <sc-for list="{{ relatedServices }}" as="s" hint-placeholder-count="3">
+              <a href="{{ s.href }}" style="background:#fff;border:1px solid var(--oem-charcoal-10);border-radius:6px;padding:22px;display:flex;flex-direction:column;gap:12px;color:var(--oem-ink);">
+                <div style="width:30px;height:30px;" dangerouslySetInnerHTML="{{ s.iconHtml }}"></div>
+                <h3 style="margin:0;font:600 17px/1.25 'Source Sans 3';">{{ s.title }}</h3>
+                <p style="margin:0;font:400 13.5px/1.5 'Source Sans 3';color:var(--oem-charcoal);">{{ s.short }}</p>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <!-- ============ OEM CONNECT ============ -->
+  <sc-if value="{{ isConnect }}">
+    <main>
+      <section style="background:var(--oem-ink);color:#fff;padding:88px 0;position:relative;overflow:hidden;">
+        <img src="assets/logo-watermark.png" alt="" style="position:absolute;right:-6%;top:-30%;width:46%;opacity:.06;">
+        <div style="position:relative;max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);">
+          <div style="display:inline-flex;align-items:center;gap:12px;font:700 12px 'Source Sans 3';letter-spacing:.14em;text-transform:uppercase;color:var(--oem-red);margin-bottom:18px;">
+            <span style="width:32px;height:2px;background:var(--oem-red);"></span>OEM CONNECT
+          </div>
+          <h1 style="font:700 clamp(34px,4.6vw,56px)/1.06 'Source Sans 3';letter-spacing:-.015em;margin:0 0 18px;max-width:780px;color:#fff;">The engineer who built it, on the line.</h1>
+          <p style="font:300 20px/1.5 'Source Sans 3';color:rgba(255,255,255,.85);max-width:560px;margin:0;">OEM Connect links the control systems we deliver to our workshop in Bolsward. Faults are read out, logic is updated and service history stays attached to the serial number.</p>
+        </div>
+      </section>
+      <section style="padding:80px 0;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;">
+          <sc-for list="{{ connectFeatures }}" as="f" hint-placeholder-count="4">
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="width:32px;height:32px;" dangerouslySetInnerHTML="{{ f.iconHtml }}"></div>
+              <h3 style="font:700 18px/1.25 'Source Sans 3';margin:0;">{{ f.title }}</h3>
+              <p style="font:400 14.5px/1.55 'Source Sans 3';color:var(--oem-charcoal);margin:0;">{{ f.desc }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+      <section style="background:var(--oem-paper);padding:80px 0;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);">
+          <h2 style="font:700 clamp(26px,3vw,36px)/1.15 'Source Sans 3';margin:0 0 36px;max-width:620px;">How a service call runs.</h2>
+          <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:4px solid var(--oem-red);">
+            <sc-for list="{{ connectSteps }}" as="s" hint-placeholder-count="4">
+              <div style="padding:28px 24px 0 0;">
+                <div style="font:700 13px 'Source Sans 3';letter-spacing:.1em;color:var(--oem-red);margin-bottom:10px;">{{ s.n }}</div>
+                <h3 style="font:600 17px/1.25 'Source Sans 3';margin:0 0 8px;">{{ s.title }}</h3>
+                <p style="font:400 14px/1.55 'Source Sans 3';color:var(--oem-charcoal);margin:0;">{{ s.desc }}</p>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <!-- ============ PROJECTS — INDEX ============ -->
+  <sc-if value="{{ isProjectIndex }}">
+    <main>
+      <section style="background:var(--oem-paper);padding:80px 0 64px;border-bottom:1px solid var(--oem-charcoal-10);">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);">
+          <div style="display:inline-flex;align-items:center;gap:12px;font:700 12px 'Source Sans 3';letter-spacing:.14em;text-transform:uppercase;color:var(--oem-red);margin-bottom:18px;">
+            <span style="width:32px;height:2px;background:var(--oem-red);"></span>PROJECTS
+          </div>
+          <h1 style="font:700 clamp(34px,4.6vw,56px)/1.06 'Source Sans 3';letter-spacing:-.015em;margin:0 0 18px;max-width:780px;">Work delivered, yard by yard.</h1>
+          <p style="font:300 20px/1.5 'Source Sans 3';color:var(--oem-charcoal);max-width:560px;margin:0;">Hull names are withheld where owners ask for it. Yard, length and scope are stated as delivered.</p>
+        </div>
+      </section>
+      <section style="padding:72px 0 96px;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;">
+          <sc-for list="{{ projects }}" as="p" hint-placeholder-count="8">
+            <a href="{{ p.href }}" style="background:#fff;border:1px solid var(--oem-charcoal-10);border-radius:6px;overflow:hidden;color:var(--oem-ink);display:block;" style-hover="box-shadow:0 8px 24px rgba(27,27,31,.08);border-color:var(--oem-charcoal-30);opacity:1;">
+              <image-slot id="{{ p.slotId }}" shape="rect" placeholder="Project photo" style="width:100%;height:210px;"></image-slot>
+              <div style="padding:20px;">
+                <div style="font:700 11px 'Source Sans 3';letter-spacing:.1em;text-transform:uppercase;color:var(--oem-charcoal-70);margin-bottom:8px;">{{ p.tag }}</div>
+                <h3 style="margin:0 0 8px;font:600 17px/1.3 'Source Sans 3';">{{ p.title }}</h3>
+                <p style="margin:0;font:400 14px/1.5 'Source Sans 3';color:var(--oem-charcoal);">{{ p.vessel }}</p>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <!-- ============ PROJECTS — DETAIL ============ -->
+  <sc-if value="{{ isProjectDetail }}">
+    <main>
+      <section style="background:var(--oem-paper);padding:36px 0 56px;border-bottom:1px solid var(--oem-charcoal-10);">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);">
+          <div style="font:400 13px 'Source Sans 3';color:var(--oem-charcoal-70);margin-bottom:34px;">
+            <a href="#/projects" style="color:var(--oem-charcoal);">Projects</a> / {{ project.title }}
+          </div>
+          <div style="display:inline-flex;align-items:center;gap:12px;font:700 12px 'Source Sans 3';letter-spacing:.14em;text-transform:uppercase;color:var(--oem-red);margin-bottom:18px;">
+            <span style="width:32px;height:2px;background:var(--oem-red);"></span>{{ project.tag }}
+          </div>
+          <h1 style="font:700 clamp(32px,4.2vw,50px)/1.07 'Source Sans 3';letter-spacing:-.015em;margin:0 0 16px;max-width:820px;">{{ project.title }}</h1>
+          <p style="font:300 20px/1.5 'Source Sans 3';color:var(--oem-charcoal);max-width:560px;margin:0;">{{ project.vessel }}</p>
+        </div>
+      </section>
+      <image-slot id="{{ project.heroSlot }}" shape="rect" placeholder="Project hero photo — wide aspect" style="width:100%;height:440px;display:block;"></image-slot>
+      <section style="padding:72px 0 88px;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:64px;">
+          <div>
+            <h2 style="font:700 26px/1.2 'Source Sans 3';margin:0 0 20px;">The job</h2>
+            <p style="font:400 17px/1.65 'Source Sans 3';color:var(--oem-charcoal);margin:0 0 32px;">{{ project.body }}</p>
+            <h3 style="font:700 20px/1.2 'Source Sans 3';margin:0 0 18px;">Delivered</h3>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <sc-for list="{{ project.delivered }}" as="row" hint-placeholder-count="4">
+                <div style="display:flex;gap:12px;align-items:flex-start;">
+                  <span style="width:16px;height:2px;background:var(--oem-red);margin-top:10px;flex-shrink:0;"></span>
+                  <span style="font:400 15.5px/1.55 'Source Sans 3';color:var(--oem-charcoal);">{{ row }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div>
+            <div style="border-top:4px solid var(--oem-red);">
+              <sc-for list="{{ project.facts }}" as="row" hint-placeholder-count="5">
+                <div style="padding:14px 0;border-bottom:1px solid var(--oem-charcoal-10);">
+                  <div style="font:600 12px 'Source Sans 3';letter-spacing:.1em;text-transform:uppercase;color:var(--oem-charcoal-70);margin-bottom:4px;">{{ row.k }}</div>
+                  <div style="font:400 15.5px/1.4 'Source Sans 3';">{{ row.v }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <a href="#/contact" style="display:inline-block;margin-top:28px;font:600 14px 'Source Sans 3';padding:14px 24px;border-radius:4px;background:var(--oem-red);color:#fff;">Discuss a similar scope</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <!-- ============ CAREERS ============ -->
+  <sc-if value="{{ isCareers }}">
+    <main>
+      <section style="background:var(--oem-paper);padding:80px 0 64px;border-bottom:1px solid var(--oem-charcoal-10);">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:end;">
+          <div>
+            <div style="display:inline-flex;align-items:center;gap:12px;font:700 12px 'Source Sans 3';letter-spacing:.14em;text-transform:uppercase;color:var(--oem-red);margin-bottom:18px;">
+              <span style="width:32px;height:2px;background:var(--oem-red);"></span>CAREERS
+            </div>
+            <h1 style="font:700 clamp(34px,4.4vw,52px)/1.06 'Source Sans 3';letter-spacing:-.015em;margin:0 0 18px;">Engineers who finish the job on board.</h1>
+            <p style="font:300 20px/1.5 'Source Sans 3';color:var(--oem-charcoal);max-width:520px;margin:0;">Workshop in Bolsward, work on hulls in Northern Europe, Barcelona and Fort Lauderdale. Travel is part of the job.</p>
+          </div>
+          <image-slot id="careers-photo" shape="rect" placeholder="Crew at work photo" style="width:100%;height:300px;"></image-slot>
+        </div>
+      </section>
+      <section style="padding:72px 0 40px;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);">
+          <h2 style="font:700 26px/1.2 'Source Sans 3';margin:0 0 28px;">Open positions</h2>
+          <div style="border-top:1px solid var(--oem-charcoal-10);">
+            <sc-for list="{{ vacancies }}" as="v" hint-placeholder-count="4">
+              <a href="#/contact" style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr) auto;gap:24px;align-items:center;padding:22px 0;border-bottom:1px solid var(--oem-charcoal-10);color:var(--oem-ink);">
+                <span style="font:600 18px/1.3 'Source Sans 3';">{{ v.title }}</span>
+                <span style="font:400 15px 'Source Sans 3';color:var(--oem-charcoal);">{{ v.location }}</span>
+                <span style="font:400 15px 'Source Sans 3';color:var(--oem-charcoal);">{{ v.type }}</span>
+                <svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--oem-red);stroke-width:2;fill:none;"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+      <section style="padding:40px 0 96px;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);">
+          <div style="background:var(--oem-paper);border:1px solid var(--oem-charcoal-10);border-radius:6px;padding:36px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;">
+            <div>
+              <h3 style="font:700 21px/1.25 'Source Sans 3';margin:0 0 6px;">Nothing listed that fits?</h3>
+              <p style="font:400 15.5px/1.5 'Source Sans 3';color:var(--oem-charcoal);margin:0;">Send an open application to our workshop manager.</p>
+            </div>
+            <a href="mailto:info@oemyachtservice.com" style="font:600 14px 'Source Sans 3';padding:14px 24px;border-radius:4px;background:var(--oem-red);color:#fff;flex-shrink:0;">Open application</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <!-- ============ TEAM / TEAM SUB ============ -->
+  <sc-if value="{{ isTeam }}">
+    <main>
+      <section style="background:var(--oem-paper);padding:80px 0 64px;border-bottom:1px solid var(--oem-charcoal-10);">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);">
+          <div style="display:inline-flex;align-items:center;gap:12px;font:700 12px 'Source Sans 3';letter-spacing:.14em;text-transform:uppercase;color:var(--oem-red);margin-bottom:18px;">
+            <span style="width:32px;height:2px;background:var(--oem-red);"></span>{{ teamPage.eyebrow }}
+          </div>
+          <h1 style="font:700 clamp(34px,4.4vw,52px)/1.06 'Source Sans 3';letter-spacing:-.015em;margin:0 0 18px;max-width:760px;">{{ teamPage.headline }}</h1>
+          <p style="font:300 20px/1.5 'Source Sans 3';color:var(--oem-charcoal);max-width:560px;margin:0;">{{ teamPage.intro }}</p>
+          <div style="display:flex;gap:8px;margin-top:32px;">
+            <a href="#/team" style="font:600 13.5px 'Source Sans 3';padding:10px 18px;border-radius:999px;border:1px solid {{ teamTabBorder }};background:{{ teamTabBg }};color:{{ teamTabFg }};">Team</a>
+            <a href="#/team-sub" style="font:600 13.5px 'Source Sans 3';padding:10px 18px;border-radius:999px;border:1px solid {{ subTabBorder }};background:{{ subTabBg }};color:{{ subTabFg }};">Team Sub</a>
+          </div>
+        </div>
+      </section>
+      <section style="padding:72px 0 96px;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px 24px;">
+          <sc-for list="{{ teamPage.people }}" as="t" hint-placeholder-count="8">
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <image-slot id="{{ t.slotId }}" shape="rect" placeholder="Portrait" style="width:100%;aspect-ratio:4/5;"></image-slot>
+              <div>
+                <h3 style="margin:0 0 4px;font:600 17px/1.3 'Source Sans 3';">{{ t.name }}</h3>
+                <div style="font:500 13.5px/1.4 'Source Sans 3';color:var(--oem-red);margin-bottom:6px;">{{ t.role }}</div>
+                <div style="font:400 13.5px/1.5 'Source Sans 3';color:var(--oem-charcoal-70);">{{ t.base }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <!-- ============ CONTACT ============ -->
+  <sc-if value="{{ isContact }}">
+    <main>
+      <section style="background:var(--oem-paper);padding:80px 0 64px;border-bottom:1px solid var(--oem-charcoal-10);">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);">
+          <div style="display:inline-flex;align-items:center;gap:12px;font:700 12px 'Source Sans 3';letter-spacing:.14em;text-transform:uppercase;color:var(--oem-red);margin-bottom:18px;">
+            <span style="width:32px;height:2px;background:var(--oem-red);"></span>CONTACT
+          </div>
+          <h1 style="font:700 clamp(34px,4.4vw,52px)/1.06 'Source Sans 3';letter-spacing:-.015em;margin:0 0 18px;max-width:700px;">Tell us what the yacht needs.</h1>
+          <p style="font:300 20px/1.5 'Source Sans 3';color:var(--oem-charcoal);max-width:520px;margin:0;">A survey request reaches an engineer, not a mailbox. We reply within one working day.</p>
+        </div>
+      </section>
+      <section style="padding:72px 0 96px;">
+        <div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:64px;">
+          <div>
+            <sc-if value="{{ formSent }}">
+              <div style="border:1px solid var(--oem-charcoal-30);border-radius:6px;padding:36px;">
+                <h2 style="font:700 24px/1.2 'Source Sans 3';margin:0 0 10px;">Request received.</h2>
+                <p style="font:400 16px/1.6 'Source Sans 3';color:var(--oem-charcoal);margin:0 0 24px;">An engineer will come back to you within one working day.</p>
+                <button onClick="{{ resetForm }}" style="font:600 14px 'Source Sans 3';padding:13px 22px;border-radius:4px;background:transparent;border:1px solid var(--oem-charcoal-30);cursor:pointer;">Send another request</button>
+              </div>
+            </sc-if>
+            <sc-if value="{{ formOpen }}">
+              <form onSubmit="{{ submitForm }}" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;">
+                <label style="display:flex;flex-direction:column;gap:7px;">
+                  <span style="font:600 13px 'Source Sans 3';letter-spacing:.02em;text-transform:uppercase;color:var(--oem-charcoal-70);">Name</span>
+                  <input type="text" required="true" style="font:400 15px 'Source Sans 3';padding:12px 14px;border:1px solid var(--oem-charcoal-30);border-radius:4px;background:#fff;">
+                </label>
+                <label style="display:flex;flex-direction:column;gap:7px;">
+                  <span style="font:600 13px 'Source Sans 3';letter-spacing:.02em;text-transform:uppercase;color:var(--oem-charcoal-70);">Email</span>
+                  <input type="email" required="true" style="font:400 15px 'Source Sans 3';padding:12px 14px;border:1px solid var(--oem-charcoal-30);border-radius:4px;background:#fff;">
+                </label>
+                <label style="display:flex;flex-direction:column;gap:7px;">
+                  <span style="font:600 13px 'Source Sans 3';letter-spacing:.02em;text-transform:uppercase;color:var(--oem-charcoal-70);">Vessel</span>
+                  <input type="text" placeholder="Yard, length" style="font:400 15px 'Source Sans 3';padding:12px 14px;border:1px solid var(--oem-charcoal-30);border-radius:4px;background:#fff;">
+                </label>
+                <label style="display:flex;flex-direction:column;gap:7px;">
+                  <span style="font:600 13px 'Source Sans 3';letter-spacing:.02em;text-transform:uppercase;color:var(--oem-charcoal-70);">Discipline</span>
+                  <select style="font:400 15px 'Source Sans 3';padding:12px 14px;border:1px solid var(--oem-charcoal-30);border-radius:4px;background:#fff;">
+                    <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+                      <option>{{ s.title }}</option>
+                    </sc-for>
+                  </select>
+                </label>
+                <label style="display:flex;flex-direction:column;gap:7px;grid-column:span 2;">
+                  <span style="font:600 13px 'Source Sans 3';letter-spacing:.02em;text-transform:uppercase;color:var(--oem-charcoal-70);">Scope</span>
+                  <textarea rows="5" style="font:400 15px/1.5 'Source Sans 3';padding:12px 14px;border:1px solid var(--oem-charcoal-30);border-radius:4px;background:#fff;resize:vertical;"></textarea>
+                </label>
+                <button type="submit" style="grid-column:span 2;justify-self:start;font:600 14px 'Source Sans 3';padding:15px 26px;border-radius:4px;background:var(--oem-red);color:#fff;border:0;cursor:pointer;">Request a survey</button>
+              </form>
+            </sc-if>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:28px;">
+            <sc-for list="{{ locations }}" as="l" hint-placeholder-count="3">
+              <div style="border-top:4px solid var(--oem-red);padding-top:18px;">
+                <h3 style="font:700 18px/1.25 'Source Sans 3';margin:0 0 4px;">{{ l.city }}</h3>
+                <div style="font:600 12px 'Source Sans 3';letter-spacing:.1em;text-transform:uppercase;color:var(--oem-charcoal-70);margin-bottom:10px;">{{ l.role }}</div>
+                <p style="font:400 15px/1.6 'Source Sans 3';color:var(--oem-charcoal);margin:0 0 8px;white-space:pre-line;">{{ l.address }}</p>
+                <a href="{{ l.telHref }}" style="font:500 15px 'Source Sans 3';display:block;">{{ l.tel }}</a>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="background:var(--oem-ink);color:rgba(255,255,255,.85);padding:80px 0 0;position:relative;overflow:hidden;">
+    
+    <div style="position:relative;max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px);">
+      <div style="display:grid;grid-template-columns:minmax(0,1.5fr) repeat(4,minmax(0,1fr));gap:32px;padding-bottom:48px;">
+        <div>
+          <img src="assets/logo-white.png" alt="OEM Yacht Service" style="height:42px;margin-bottom:16px;display:block;">
+          <p style="font:400 14px/1.6 'Source Sans 3';color:rgba(255,255,255,.65);max-width:280px;margin:0;">Independent yacht support, in combination with the original equipment manufacturers' knowledge.</p>
+        </div>
+        <div>
+          <h5 style="font:700 11px 'Source Sans 3';letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin:0 0 16px;">What we do</h5>
+          <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+            <a href="{{ s.href }}" style="color:rgba(255,255,255,.85);font:400 14px/1.85 'Source Sans 3';display:block;">{{ s.title }}</a>
+          </sc-for>
+        </div>
+        <div>
+          <h5 style="font:700 11px 'Source Sans 3';letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin:0 0 16px;">Projects</h5>
+          <a href="#/projects" style="color:rgba(255,255,255,.85);font:400 14px/1.85 'Source Sans 3';display:block;">All projects</a>
+          <a href="#/oem-connect" style="color:rgba(255,255,255,.85);font:400 14px/1.85 'Source Sans 3';display:block;">OEM Connect</a>
+          <a href="#/careers" style="color:rgba(255,255,255,.85);font:400 14px/1.85 'Source Sans 3';display:block;">Careers</a>
+        </div>
+        <div>
+          <h5 style="font:700 11px 'Source Sans 3';letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin:0 0 16px;">About</h5>
+          <a href="#/team" style="color:rgba(255,255,255,.85);font:400 14px/1.85 'Source Sans 3';display:block;">Team</a>
+          <a href="#/team-sub" style="color:rgba(255,255,255,.85);font:400 14px/1.85 'Source Sans 3';display:block;">Team Sub</a>
+        </div>
+        <div>
+          <h5 style="font:700 11px 'Source Sans 3';letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin:0 0 16px;">Contact</h5>
+          <a href="mailto:info@oemyachtservice.com" style="color:rgba(255,255,255,.85);font:400 14px/1.85 'Source Sans 3';display:block;">info@oemyachtservice.com</a>
+          <a href="tel:+31611004005" style="color:rgba(255,255,255,.85);font:400 14px/1.85 'Source Sans 3';display:block;">+31 (0) 6 1100 4005</a>
+          <p style="margin:10px 0 0;font:400 13px/1.6 'Source Sans 3';color:rgba(255,255,255,.5);">Industriepark 10<br>8701 PN Bolsward</p>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.1);padding:22px 0;flex-wrap:wrap;gap:12px;">
+        <div style="display:flex;gap:20px;">
+          <a href="#/contact" style="font:500 12.5px 'Source Sans 3';color:rgba(255,255,255,.6);">Terms &amp; conditions</a>
+          <a href="#/contact" style="font:500 12.5px 'Source Sans 3';color:rgba(255,255,255,.6);">Privacy</a>
+        </div>
+        <span style="font:500 12px 'Source Sans 3';color:rgba(255,255,255,.4);">© 2026 OEM Yacht Service B.V.</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const I = (p) => '<svg viewBox="0 0 24 24" style="stroke:#E40034;stroke-width:1.75;fill:none;stroke-linecap:square;stroke-linejoin:round;width:100%;height:100%">' + p + '</svg>';
+
+const ICONS = {
+  cpu: I('<rect x="5.5" y="5.5" width="13" height="13" rx="1"/><rect x="9" y="9" width="6" height="6"/><path d="M5.5 9H3M5.5 13H3M21 9h-2.5M21 13h-2.5M9 5.5V3M13 5.5V3M17 5.5V3M9 21v-2.5M13 21v-2.5M17 21v-2.5"/>'),
+  valve: I('<circle cx="12" cy="12" r="3.5"/><path d="M12 8.5V3M8.5 3h7M12 15.5V21M3 12h5.5M15.5 12H21M6 9v6M18 9v6"/>'),
+  cog: I('<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1L7 17M17 7l2.1-2.1"/>'),
+  crane: I('<path d="M4 20V7M4 7h14M18 7l-3-3M4 7l3-3M9 7v3l9-3M4 14h6M14 20v-4a2 2 0 0 0-2-2"/>'),
+  boarding: I('<path d="M3 19l9-3 9 3M5 19V9h2v10M19 19V9h-2v10M9 14V6h6v8"/>'),
+  door: I('<path d="M5 21h14M7 21V5h10v16M15 13h.01"/>'),
+  anchor: I('<circle cx="12" cy="4.8" r="2"/><path d="M12 6.8V22M5 14a7 7 0 0 0 14 0M5 14H3M19 14h2M9 9h6"/>'),
+  stack: I('<rect x="4" y="4" width="10" height="10" rx="1"/><rect x="10" y="10" width="10" height="10" rx="1"/>'),
+  signal: I('<path d="M5 12a7 7 0 0 1 14 0M2 12a10 10 0 0 1 20 0M9 16a3 3 0 0 1 6 0"/><circle cx="12" cy="20" r="1.2"/>'),
+  clipboard: I('<rect x="6" y="4" width="12" height="17" rx="1"/><path d="M9 4V2.5h6V4M9 10h6M9 14h6M9 18h3"/>'),
+  wrench: I('<path d="M15 4a5 5 0 0 0-5.7 6.4L4 15.7V20h4.3l5.3-5.3A5 5 0 0 0 20 9l-3 3-2-2 3-3a5 5 0 0 0-3-3z"/>'),
+};
+
+const SERVICES = [
+  {
+    slug: 'electrical-control-systems',
+    nav: 'PL/ECC — Electrical control systems',
+    title: 'Electrical control systems',
+    eyebrow: 'PL / ECC',
+    icon: 'cpu',
+    short: 'PLC cabinets and control logic, engineered and rebuilt at our own workshop.',
+    headline: 'Control cabinets built to be serviced, not replaced.',
+    intro: 'We design, build and rewire the PLC and ECC cabinets that drive deck equipment. Logic stays documented and stays ours to support.',
+    scope: [
+      'New PLC and ECC cabinets, built and wet-tested in Bolsward',
+      'Retrofit of obsolete control systems on existing equipment',
+      'Fault finding on cranes, platforms and hull doors in service',
+      'Control logic rewritten and documented per serial number',
+      'Class-witnessed commissioning and sea trial attendance',
+    ],
+    specs: [
+      { k: 'Controller', v: 'Siemens S7 / Beckhoff, per yard standard' },
+      { k: 'Enclosure', v: 'Stainless 316, IP56 marine grade' },
+      { k: 'Remote support', v: 'OEM Connect, included on new builds' },
+      { k: 'Documentation', v: 'As-built schematics, logic export, spares list' },
+    ],
+  },
+  {
+    slug: 'hydraulic',
+    nav: 'HPU/Valve Block — Hydraulic',
+    title: 'Hydraulic systems',
+    eyebrow: 'HPU / VALVE BLOCK',
+    icon: 'valve',
+    short: 'Power units and valve blocks, sized to the equipment they drive.',
+    headline: 'Power units and valve blocks, sized on the actual duty cycle.',
+    intro: 'Hydraulic power units and manifolds for cranes, passerelles and hull doors. Built, flushed and tested before they ever reach the yard.',
+    scope: [
+      'HPU design and build, sized on measured duty cycle',
+      'Custom valve blocks and manifolds, load-tested before delivery',
+      'Cylinder overhaul, reseal and chrome replacement',
+      'Pipe and hose runs, flushed to NAS class on commissioning',
+      'Oil analysis and scheduled service during refit periods',
+    ],
+    specs: [
+      { k: 'Working pressure', v: 'Up to 350 bar' },
+      { k: 'Cleanliness', v: 'Flushed and reported to NAS 6' },
+      { k: 'Valve blocks', v: 'Machined and assembled in-house' },
+      { k: 'Testing', v: 'Full-load bench test before shipment' },
+    ],
+  },
+  {
+    slug: 'mechanic',
+    nav: 'Mechanic',
+    title: 'Mechanic',
+    eyebrow: 'MECHANIC',
+    icon: 'cog',
+    short: 'Alignments, vibration work and mechanical overhaul on board.',
+    headline: 'Mechanical work that ends in a clean sea trial.',
+    intro: 'Engine alignments, vibration analysis and mechanical overhaul, measured on board and signed off with readings, not impressions.',
+    scope: [
+      'Laser shaft and engine alignment, before and after readings',
+      'Vibration measurement and mitigation on drivelines',
+      'Gearbox and thruster overhaul during yard periods',
+      'Bearing, seal and coupling replacement',
+      'Sea trial attendance with measurement report',
+    ],
+    specs: [
+      { k: 'Alignment', v: 'Laser, tolerances per engine maker' },
+      { k: 'Vibration', v: 'ISO 20283 / ISO 10816 assessment' },
+      { k: 'Deliverable', v: 'Signed measurement report per shaft line' },
+      { k: 'Availability', v: 'Fly-out teams from all three bases' },
+    ],
+  },
+  {
+    slug: 'tender-cranes',
+    nav: 'Tender Cranes',
+    title: 'Tender Cranes',
+    eyebrow: 'TENDER CRANES',
+    icon: 'crane',
+    short: 'Launch and recovery cranes for tender and toy garages.',
+    headline: 'Launch and recovery, rated for the tender you actually carry.',
+    intro: 'Tender and toy cranes engineered to the garage they live in, in hydraulic, electric and mechanical drive. Built, class-certified and serviced by us.',
+    scope: [
+      'Crane selection and 3D integration into the garage envelope',
+      'New build in hydraulic, electric or mechanical drive',
+      'Class certification and load testing with the notified body',
+      'Retrofit of controls and safety systems on existing cranes',
+      'Annual inspection, load test and spares supply',
+    ],
+    specs: [
+      { k: 'Drive options', v: 'Hydraulic, electric, mechanic' },
+      { k: 'Safe working load', v: 'Specified per garage and tender' },
+      { k: 'Certification', v: 'Load tested, class certificate issued' },
+      { k: 'Remote support', v: 'OEM Connect on all new cranes' },
+    ],
+  },
+  {
+    slug: 'boarding',
+    nav: 'Boarding',
+    title: 'Boarding',
+    eyebrow: 'BOARDING',
+    icon: 'boarding',
+    short: 'Passerelles, stairs and bathing platforms for daily deployment.',
+    headline: 'Boarding equipment for daily use, not occasional use.',
+    intro: 'Passerelles, boarding stairs and bathing platforms built around repeated deployment, guest safety and a quiet deck.',
+    scope: [
+      'Telescopic and hydraulic passerelles, deck-integrated',
+      'Boarding stairs and side ladders in stainless and teak',
+      'Bathing platforms and swim ladders, actuated',
+      'Handrail, light and non-slip detailing to owner spec',
+      'Service, reseal and control upgrades in refit',
+    ],
+    specs: [
+      { k: 'Drive options', v: 'Hydraulic, electric, mechanic' },
+      { k: 'Finish', v: 'Stainless 316, teak, painted to yard spec' },
+      { k: 'Safety', v: 'Load tested, guest-rated handrails' },
+      { k: 'Noise', v: 'Damped actuation, measured on deck' },
+    ],
+  },
+  {
+    slug: 'hull-doors',
+    nav: 'Hull Doors',
+    title: 'Hull Doors',
+    eyebrow: 'HULL DOORS',
+    icon: 'door',
+    short: 'Shell and transom doors for tender bays and beach clubs.',
+    headline: 'Shell doors that seal after a thousand cycles.',
+    intro: 'Shell, transom and garage doors, actuated and sealed for tender bays and beach clubs. Watertight integrity is the specification, not a hope.',
+    scope: [
+      'Shell, transom and side-garage door design and build',
+      'Hydraulic and electric actuation with position feedback',
+      'Seal design, replacement and watertight testing',
+      'Hinge, bearing and locking mechanism overhaul',
+      'Class approval and hose test attendance',
+    ],
+    specs: [
+      { k: 'Drive options', v: 'Hydraulic, electric, mechanic' },
+      { k: 'Sealing', v: 'Inflatable and compression seals, hose tested' },
+      { k: 'Feedback', v: 'Position sensing to bridge and local panel' },
+      { k: 'Approval', v: 'Class-witnessed watertight test' },
+    ],
+  },
+];
+
+const PROJECTS = [
+  { slug: 'project-1', nav: 'Project 1', tag: 'Refit', title: 'Tender garage hull door replacement', vessel: '85 m fleet support vessel, Northern Europe', body: 'Both shell doors had lost watertight integrity after fifteen seasons. We removed the original leaves, rebuilt the hinge and locking geometry, and fitted new doors with inflatable seals and position feedback to the bridge.', delivered: ['Two new shell door leaves, stainless frame', 'Hydraulic actuation with position feedback', 'Inflatable seal set, hose tested with class', 'New local control panel and bridge indication'], facts: [{ k: 'Yard period', v: '9 weeks' }, { k: 'Vessel', v: '85 m fleet support vessel' }, { k: 'Discipline', v: 'Hull Doors, Hydraulic' }, { k: 'Class', v: 'Watertight test witnessed' }, { k: 'Location', v: 'Northern Europe' }] },
+  { slug: 'project-2', nav: 'Project 2', tag: 'Newbuild support', title: 'Hydraulic passerelle installation', vessel: '62 m motor yacht, Dutch yard', body: 'A telescopic passerelle integrated into the port side bulwark during final outfitting. The deck envelope was fixed, so the power unit and manifold were built around the space that remained.', delivered: ['Telescopic passerelle, deck-integrated', 'HPU and valve block sized on duty cycle', 'Guest handrail and deck lighting', 'Commissioning during sea trial'], facts: [{ k: 'Yard period', v: '5 weeks' }, { k: 'Vessel', v: '62 m motor yacht' }, { k: 'Discipline', v: 'Boarding, Hydraulic' }, { k: 'Delivery', v: 'On yard schedule' }, { k: 'Location', v: 'Netherlands' }] },
+  { slug: 'project-3', nav: 'Project 3', tag: 'Service', title: 'Crane control cabinet overhaul', vessel: '74 m motor yacht, Barcelona', body: 'The original crane controller was out of production and out of spares. We rebuilt the cabinet on a current PLC platform, kept the existing hydraulics, and documented the logic so the next engineer can read it.', delivered: ['New PLC cabinet, stainless IP56', 'Control logic rewritten and documented', 'Load test and recertification', 'OEM Connect remote diagnostics enabled'], facts: [{ k: 'Duration', v: '3 weeks' }, { k: 'Vessel', v: '74 m motor yacht' }, { k: 'Discipline', v: 'Electrical control systems' }, { k: 'Result', v: 'Crane recertified' }, { k: 'Location', v: 'Barcelona' }] },
+  { slug: 'project-4', nav: 'Project 4', tag: 'Refit', title: 'Bathing platform actuation upgrade', vessel: '58 m motor yacht, Fort Lauderdale', body: 'Guests were waiting on a slow, noisy platform. We replaced the cylinders and manifold, re-tuned the control ramps, and brought deck-level noise down to a level the owner accepted on the spot.', delivered: ['New cylinders and manifold', 'Re-tuned acceleration ramps', 'Seal and bearing replacement', 'Noise measurement before and after'], facts: [{ k: 'Duration', v: '4 weeks' }, { k: 'Vessel', v: '58 m motor yacht' }, { k: 'Discipline', v: 'Boarding, Hydraulic' }, { k: 'Result', v: 'Cycle time halved' }, { k: 'Location', v: 'Fort Lauderdale' }] },
+  { slug: 'project-5', nav: 'Project 5', tag: 'Refit', title: 'Toy garage crane replacement', vessel: '68 m motor yacht, Northern Europe', body: 'The owner added a larger toy than the garage crane was rated for. A new electric crane was engineered into the existing envelope without touching the garage structure.', delivered: ['New electric tender crane', 'Structural interface without garage rework', 'Class load test and certificate', 'Crew handover and training'], facts: [{ k: 'Yard period', v: '7 weeks' }, { k: 'Vessel', v: '68 m motor yacht' }, { k: 'Discipline', v: 'Tender Cranes' }, { k: 'Drive', v: 'Electric' }, { k: 'Location', v: 'Northern Europe' }] },
+  { slug: 'project-6', nav: 'Project 6', tag: 'Service', title: 'Shaft line alignment and vibration survey', vessel: '92 m motor yacht, Mediterranean', body: 'A vibration complaint at cruise speed was traced to alignment drift on both shaft lines. Laser alignment and a coupling replacement brought readings back inside ISO limits.', delivered: ['Laser alignment, both shaft lines', 'Coupling replacement', 'Vibration survey at four load points', 'Signed measurement report'], facts: [{ k: 'Duration', v: '2 weeks' }, { k: 'Vessel', v: '92 m motor yacht' }, { k: 'Discipline', v: 'Mechanic' }, { k: 'Standard', v: 'ISO 20283 assessment' }, { k: 'Location', v: 'Mediterranean' }] },
+  { slug: 'project-7', nav: 'Project 7', tag: 'Refit', title: 'Beach club transom door rebuild', vessel: '55 m motor yacht, Dutch yard', body: 'The transom door frame had corroded at the lower hinge. Frame, hinge and seal were rebuilt in place, with a new manifold to stop the drift that caused the wear.', delivered: ['Frame and hinge rebuild in situ', 'New seal set and hose test', 'New manifold with position holding', 'Repaint to yard finish standard'], facts: [{ k: 'Yard period', v: '6 weeks' }, { k: 'Vessel', v: '55 m motor yacht' }, { k: 'Discipline', v: 'Hull Doors' }, { k: 'Class', v: 'Hose test witnessed' }, { k: 'Location', v: 'Netherlands' }] },
+  { slug: 'project-8', nav: 'Project 8', tag: 'Newbuild support', title: 'Fleet-wide OEM Connect rollout', vessel: 'Four hulls, one owner group', body: 'An owner group wanted one service picture across four yachts. Every crane, door and platform we had delivered was connected, with history logged against serial numbers.', delivered: ['OEM Connect on 23 items of equipment', 'Fleet service history per serial number', 'Remote logic update path', 'Quarterly condition reporting'], facts: [{ k: 'Duration', v: '5 months' }, { k: 'Scope', v: 'Four hulls, 23 equipment items' }, { k: 'Discipline', v: 'OEM Connect' }, { k: 'Result', v: 'One fleet service picture' }, { k: 'Location', v: 'Europe, Caribbean' }] },
+];
+
+const TEAM = {
+  team: {
+    eyebrow: 'ABOUT — TEAM',
+    headline: 'The people who sign off the job.',
+    intro: 'Management, engineering and project coordination, based at the workshop in Bolsward.',
+    people: [
+      { name: 'Head of Service', role: 'Management', base: 'Bolsward' },
+      { name: 'Technical Director', role: 'Management', base: 'Bolsward' },
+      { name: 'Lead Engineer', role: 'Control Technology', base: 'Bolsward' },
+      { name: 'Lead Engineer', role: 'Hydraulics', base: 'Bolsward' },
+      { name: 'Project Coordinator', role: 'Aftersales', base: 'Bolsward' },
+      { name: 'Project Coordinator', role: 'Refit', base: 'Barcelona' },
+      { name: 'Service Manager', role: 'Americas', base: 'Fort Lauderdale' },
+      { name: 'Workshop Manager', role: 'Production', base: 'Bolsward' },
+    ],
+  },
+  sub: {
+    eyebrow: 'ABOUT — TEAM SUB',
+    headline: 'Field teams and specialist partners.',
+    intro: 'Service engineers who fly out to the hull, plus the specialist partners we bring in under our own supervision.',
+    people: [
+      { name: 'Service Engineer', role: 'Hydraulics', base: 'Field, Europe' },
+      { name: 'Service Engineer', role: 'Electrical', base: 'Field, Europe' },
+      { name: 'Service Engineer', role: 'Mechanic', base: 'Field, Mediterranean' },
+      { name: 'Service Engineer', role: 'Electrical', base: 'Field, Americas' },
+      { name: 'Certified Welder', role: 'Stainless, aluminium', base: 'Bolsward' },
+      { name: 'Class Surveyor liaison', role: 'Certification', base: 'Bolsward' },
+    ],
+  },
+};
+
+class Component extends DCLogic {
+  state = { route: '/', menu: null, sent: false };
+
+  componentDidMount() {
+    this._sync = () => {
+      const h = (window.location.hash || '').replace(/^#/, '') || '/';
+      this.setState({ route: h, menu: null, sent: false });
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener('hashchange', this._sync);
+    this._sync();
+  }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._sync); }
+
+  renderVals() {
+    const r = this.state.route;
+    const seg = r.split('/').filter(Boolean);
+    const active = '#E40034', idle = '#1B1B1F';
+
+    const svcSlug = seg[0] === 'what-we-do' ? seg[1] : null;
+    const service = SERVICES.find(s => s.slug === svcSlug) || SERVICES[0];
+    const projSlug = seg[0] === 'projects' ? seg[1] : null;
+    const project = PROJECTS.find(p => p.slug === projSlug) || PROJECTS[0];
+
+    const withMeta = (list, kind) => list.map(x => Object.assign({}, x, {
+      href: '#/' + kind + '/' + x.slug,
+      slotId: kind + '-' + x.slug,
+      linkLabel: kind === 'what-we-do' ? 'Read more' : 'View project',
+      heroSlot: kind + '-' + x.slug + '-hero',
+      iconHtml: { __html: ICONS[x.icon] || ICONS.anchor },
+    }));
+
+    const services = withMeta(SERVICES, 'what-we-do');
+    const projects = withMeta(PROJECTS, 'projects');
+
+    const isTeamSub = seg[0] === 'team-sub';
+    const tp = isTeamSub ? TEAM.sub : TEAM.team;
+
+    return {
+      isHome: r === '/' || r === '',
+      isServiceIndex: seg[0] === 'what-we-do' && !seg[1],
+      isServiceDetail: seg[0] === 'what-we-do' && !!seg[1],
+      isConnect: seg[0] === 'oem-connect',
+      isProjectIndex: seg[0] === 'projects' && !seg[1],
+      isProjectDetail: seg[0] === 'projects' && !!seg[1],
+      isCareers: seg[0] === 'careers',
+      isTeam: seg[0] === 'team' || seg[0] === 'team-sub',
+      isContact: seg[0] === 'contact',
+
+      homeColor: (r === '/' || r === '') ? active : idle,
+      wwdColor: seg[0] === 'what-we-do' ? active : idle,
+      connectColor: seg[0] === 'oem-connect' ? active : idle,
+      projColor: seg[0] === 'projects' ? active : idle,
+      careersColor: seg[0] === 'careers' ? active : idle,
+      aboutColor: (seg[0] === 'team' || seg[0] === 'team-sub') ? active : idle,
+      contactColor: seg[0] === 'contact' ? active : idle,
+
+      menuWwd: this.state.menu === 'wwd',
+      menuProj: this.state.menu === 'proj',
+      menuAbout: this.state.menu === 'about',
+      hoverWwd: () => this.setState({ menu: 'wwd' }),
+      hoverProj: () => this.setState({ menu: 'proj' }),
+      hoverAbout: () => this.setState({ menu: 'about' }),
+      closeMenu: () => this.setState({ menu: null }),
+
+      services,
+      projects,
+      homeProjects: projects.slice(0, 4),
+      service: Object.assign({}, service, {
+        slotId: 'what-we-do-' + service.slug,
+        iconHtml: { __html: ICONS[service.icon] },
+      }),
+      relatedServices: services.filter(s => s.slug !== service.slug).slice(0, 3),
+      project: Object.assign({}, project, {
+        heroSlot: 'projects-' + project.slug + '-hero',
+      }),
+
+      teamPage: tp.people ? Object.assign({}, tp, {
+        people: tp.people.map((p, i) => Object.assign({}, p, { slotId: (isTeamSub ? 'sub' : 'team') + '-' + i })),
+      }) : tp,
+      teamTabBg: isTeamSub ? 'transparent' : '#1B1B1F',
+      teamTabFg: isTeamSub ? '#4D4D54' : '#fff',
+      teamTabBorder: isTeamSub ? '#C9C9CD' : '#1B1B1F',
+      subTabBg: isTeamSub ? '#1B1B1F' : 'transparent',
+      subTabFg: isTeamSub ? '#fff' : '#4D4D54',
+      subTabBorder: isTeamSub ? '#1B1B1F' : '#C9C9CD',
+
+      pillars: [
+        { title: 'Only Service & Refit', desc: 'No newbuild backlog competing for our time. Every job on the schedule is service or refit work.', iconHtml: { __html: ICONS.anchor } },
+        { title: 'One Stop Shop', desc: 'Hydraulic, electrical and mechanical disciplines under one roof, on one purchase order.', iconHtml: { __html: ICONS.stack } },
+        { title: 'OEM Connect', desc: 'Remote monitoring and diagnostics on the equipment we build, wherever the yacht is berthed.', iconHtml: { __html: ICONS.signal } },
+      ],
+      connectStats: [
+        { value: '3 bases', label: 'Bolsward, Barcelona, Fort Lauderdale' },
+        { value: '< 1 day', label: 'Response on a survey request' },
+        { value: 'Per serial', label: 'Service history on every unit' },
+      ],
+      connectFeatures: [
+        { title: 'Live diagnostics', desc: 'Fault codes on cranes, passerelles and hull doors read out from the workshop.', iconHtml: { __html: ICONS.signal } },
+        { title: 'Remote logic updates', desc: 'Control logic and firmware updated without a flight and without a yard period.', iconHtml: { __html: ICONS.cpu } },
+        { title: 'Service history', desc: 'Every intervention logged against the serial number of the unit it touched.', iconHtml: { __html: ICONS.clipboard } },
+        { title: 'Direct line', desc: 'The call reaches the engineer who built the system, not a support tier.', iconHtml: { __html: ICONS.wrench } },
+      ],
+      connectSteps: [
+        { n: '01', title: 'Crew reports', desc: 'A fault is raised from the bridge or the deck panel.' },
+        { n: '02', title: 'We read out', desc: 'Our engineer pulls the log and fault state remotely.' },
+        { n: '03', title: 'Fix or plan', desc: 'Resolved remotely, or parts and a slot are scheduled.' },
+        { n: '04', title: 'Logged', desc: 'The intervention is written to the unit history.' },
+      ],
+      vacancies: [
+        { title: 'Service Engineer — Hydraulics', location: 'Bolsward + field', type: 'Full time' },
+        { title: 'Service Engineer — Electrical', location: 'Bolsward + field', type: 'Full time' },
+        { title: 'Project Coordinator — Refit', location: 'Barcelona', type: 'Full time' },
+        { title: 'Mechanical Engineer', location: 'Bolsward', type: 'Full time' },
+        { title: 'Workshop Technician', location: 'Bolsward', type: 'Full time' },
+      ],
+      locations: [
+        { city: 'Bolsward', role: 'Headquarters & workshop', address: 'Industriepark 10\n8701 PN Bolsward, Netherlands', tel: '+31 (0) 6 1100 4005', telHref: 'tel:+31611004005' },
+        { city: 'Barcelona', role: 'Mediterranean service', address: 'Port Vell\nBarcelona, Spain', tel: '+31 (0) 6 1100 4005', telHref: 'tel:+31611004005' },
+        { city: 'Fort Lauderdale', role: 'Americas service', address: 'Fort Lauderdale\nFlorida, United States', tel: '+31 (0) 6 1100 4005', telHref: 'tel:+31611004005' },
+      ],
+
+      formSent: this.state.sent,
+      formOpen: !this.state.sent,
+      submitForm: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      resetForm: () => this.setState({ sent: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

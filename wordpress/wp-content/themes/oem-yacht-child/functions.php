@@ -20,7 +20,7 @@ add_filter( 'upload_mimes', function( $mimes ) {
     return $mimes;
 });
 
-// --- Adobe Fonts (Acumin Pro 300/400/700) ---
+// --- Adobe Fonts (Acumin Pro 400/700) ---
 
 add_action( 'wp_enqueue_scripts', function() {
     wp_enqueue_style( 'adobe-fonts', 'https://use.typekit.net/bbm2zev.css', [], null );

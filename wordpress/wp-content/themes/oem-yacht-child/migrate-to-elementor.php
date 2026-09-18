@@ -64,7 +64,7 @@ function el_heading( $text, $tag = 'h2', $extra = [] ) {
         'header_size' => $tag,
         'title_color' => '#1B1B1F',
         'typography_typography'   => 'custom',
-        'typography_font_family'  => 'Source Sans 3',
+        'typography_font_family'  => 'Acumin Pro',
         'typography_font_weight'  => '700',
     ], $extra ) );
 }
@@ -74,7 +74,7 @@ function el_text( $html, $extra = [] ) {
         'editor'     => $html,
         'text_color' => '#4D4D54',
         'typography_typography'  => 'custom',
-        'typography_font_family' => 'Source Sans 3',
+        'typography_font_family' => 'Acumin Pro',
         'typography_font_weight' => '400',
         'typography_font_size'   => ['unit' => 'px', 'size' => 17, 'sizes' => []],
         'typography_line_height' => ['unit' => 'em', 'size' => 1.65, 'sizes' => []],
@@ -87,8 +87,8 @@ function el_eyebrow( $text, $extra = [] ) {
         'header_size' => 'span',
         'title_color' => '#7A7A82',
         'typography_typography'      => 'custom',
-        'typography_font_family'     => 'Source Sans 3',
-        'typography_font_weight'     => '600',
+        'typography_font_family'     => 'Acumin Pro',
+        'typography_font_weight'     => '300',
         'typography_font_size'       => ['unit' => 'px', 'size' => 13, 'sizes' => []],
         'typography_letter_spacing'  => ['unit' => 'px', 'size' => 3, 'sizes' => []],
         'typography_text_transform'  => 'uppercase',
@@ -104,8 +104,8 @@ function el_button( $text, $url, $extra = [] ) {
         'button_text_color' => '#FFFFFF',
         'border_radius'     => ['unit' => 'px', 'top' => '6', 'right' => '6', 'bottom' => '6', 'left' => '6', 'isLinked' => true],
         'typography_typography'  => 'custom',
-        'typography_font_family' => 'Source Sans 3',
-        'typography_font_weight' => '600',
+        'typography_font_family' => 'Acumin Pro',
+        'typography_font_weight' => '700',
         'selected_icon'     => ['value' => 'fas fa-arrow-right', 'library' => 'fa-solid'],
         'icon_align'        => 'right',
     ], $extra ) );
@@ -132,11 +132,11 @@ function el_icon_box( $icon, $title, $desc, $extra = [] ) {
         'title_color'     => '#1B1B1F',
         'description_color'=> '#4D4D54',
         'title_typography_typography'  => 'custom',
-        'title_typography_font_family' => 'Source Sans 3',
+        'title_typography_font_family' => 'Acumin Pro',
         'title_typography_font_weight' => '700',
         'title_typography_font_size'   => ['unit' => 'px', 'size' => 20, 'sizes' => []],
         'description_typography_typography'  => 'custom',
-        'description_typography_font_family' => 'Source Sans 3',
+        'description_typography_font_family' => 'Acumin Pro',
         'description_typography_font_size'   => ['unit' => 'px', 'size' => 16, 'sizes' => []],
         'description_typography_line_height' => ['unit' => 'em', 'size' => 1.55, 'sizes' => []],
     ], $extra ) );
@@ -197,31 +197,31 @@ if ( $kit_id ) {
             '_id' => 'primary',
             'title' => 'Primary',
             'typography_typography' => 'custom',
-            'typography_font_family' => 'Source Sans 3',
+            'typography_font_family' => 'Acumin Pro',
             'typography_font_weight' => '400',
         ],
         [
             '_id' => 'secondary',
             'title' => 'Secondary',
             'typography_typography' => 'custom',
-            'typography_font_family' => 'Source Sans 3',
+            'typography_font_family' => 'Acumin Pro',
             'typography_font_weight' => '700',
         ],
         [
             '_id' => 'text',
             'title' => 'Text',
             'typography_typography' => 'custom',
-            'typography_font_family' => 'Source Sans 3',
+            'typography_font_family' => 'Acumin Pro',
             'typography_font_weight' => '400',
             'typography_font_size' => ['unit' => 'px', 'size' => 17],
             'typography_line_height' => ['unit' => 'em', 'size' => 1.65],
         ],
         [
             '_id' => 'accent',
-            'title' => 'Accent',
+            'title' => 'Subheading',
             'typography_typography' => 'custom',
-            'typography_font_family' => 'Source Sans 3',
-            'typography_font_weight' => '600',
+            'typography_font_family' => 'Acumin Pro',
+            'typography_font_weight' => '300',
         ],
     ];
     $kit_settings['container_width'] = ['unit' => 'px', 'size' => 1240, 'sizes' => []];
@@ -274,7 +274,7 @@ $header_data = [
                 'html' => '<div style="display:flex;align-items:center;justify-content:space-between;max-width:1240px;margin:0 auto;padding:0 24px;height:72px;">
   <a href="/" style="display:block;line-height:0;"><img src="' . esc_url( $logo_url ) . '" alt="OEM Yacht Service" style="height:36px;"></a>
   <nav id="oem-el-nav" style="flex:1;display:flex;justify-content:center;">[elementor-template id="nav-placeholder"]</nav>
-  <a href="/contact/" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:#E40034;color:#fff;border-radius:6px;font:600 15px/1 \'Source Sans 3\',sans-serif;text-decoration:none;">Contact</a>
+  <a href="/contact/" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:#E40034;color:#fff;border-radius:6px;font:700 15px/1 \'Acumin Pro\',sans-serif;text-decoration:none;">Contact</a>
 </div>',
             ] ),
         ] )],
@@ -306,36 +306,36 @@ $footer_html = '<div style="max-width:1240px;margin:0 auto;padding:64px 24px 32p
   <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:32px;">
     <div>
       <a href="/"><img src="' . esc_url( $logo_white ) . '" alt="OEM Yacht Service" style="height:28px;margin-bottom:16px;display:block;"></a>
-      <p style="font:300 15px/1.6 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.6);margin:0;">Independent yacht support, in combination with the original equipment manufacturers\' knowledge.</p>
+      <p style="font:300 15px/1.6 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.6);margin:0;">Independent yacht support, in combination with the original equipment manufacturers\' knowledge.</p>
     </div>
     <div>
-      <h5 style="font:700 14px/1.3 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:2px;margin:0 0 16px;">What we do</h5>
-      <a href="/what-we-do/electrical-control-systems/" style="display:block;font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">Electrical control systems</a>
-      <a href="/what-we-do/hydraulic/" style="display:block;font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">Hydraulic systems</a>
-      <a href="/what-we-do/mechanic/" style="display:block;font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">Mechanic</a>
-      <a href="/what-we-do/tender-cranes/" style="display:block;font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">Tender Cranes</a>
-      <a href="/what-we-do/boarding/" style="display:block;font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">Boarding</a>
-      <a href="/what-we-do/hull-doors/" style="display:block;font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">Hull Doors</a>
+      <h5 style="font:700 14px/1.3 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:2px;margin:0 0 16px;">What we do</h5>
+      <a href="/what-we-do/electrical-control-systems/" style="display:block;font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">Electrical control systems</a>
+      <a href="/what-we-do/hydraulic/" style="display:block;font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">Hydraulic systems</a>
+      <a href="/what-we-do/mechanic/" style="display:block;font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">Mechanic</a>
+      <a href="/what-we-do/tender-cranes/" style="display:block;font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">Tender Cranes</a>
+      <a href="/what-we-do/boarding/" style="display:block;font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">Boarding</a>
+      <a href="/what-we-do/hull-doors/" style="display:block;font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">Hull Doors</a>
     </div>
     <div>
-      <h5 style="font:700 14px/1.3 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:2px;margin:0 0 16px;">Projects</h5>
-      <a href="/projects/" style="display:block;font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">All projects</a>
-      <a href="/oem-connect/" style="display:block;font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">OEM Connect</a>
-      <a href="/careers/" style="display:block;font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">Careers</a>
+      <h5 style="font:700 14px/1.3 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:2px;margin:0 0 16px;">Projects</h5>
+      <a href="/projects/" style="display:block;font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">All projects</a>
+      <a href="/oem-connect/" style="display:block;font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">OEM Connect</a>
+      <a href="/careers/" style="display:block;font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">Careers</a>
     </div>
     <div>
-      <h5 style="font:700 14px/1.3 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:2px;margin:0 0 16px;">About</h5>
-      <a href="/team/" style="display:block;font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">Team</a>
-      <a href="/team-sub/" style="display:block;font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">Team Sub</a>
+      <h5 style="font:700 14px/1.3 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:2px;margin:0 0 16px;">About</h5>
+      <a href="/team/" style="display:block;font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">Team</a>
+      <a href="/team-sub/" style="display:block;font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">Team Sub</a>
     </div>
     <div>
-      <h5 style="font:700 14px/1.3 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:2px;margin:0 0 16px;">Contact</h5>
-      <a href="mailto:info@oemyachtservice.com" style="display:block;font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">info@oemyachtservice.com</a>
-      <a href="tel:+31611004005" style="display:block;font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">+31 (0) 6 1100 4005</a>
-      <p style="font:400 15px/1.6 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.5);margin:8px 0 0;">Industriepark 10<br>8701 PN Bolsward</p>
+      <h5 style="font:700 14px/1.3 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:2px;margin:0 0 16px;">Contact</h5>
+      <a href="mailto:info@oemyachtservice.com" style="display:block;font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">info@oemyachtservice.com</a>
+      <a href="tel:+31611004005" style="display:block;font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.75);text-decoration:none;padding:4px 0;">+31 (0) 6 1100 4005</a>
+      <p style="font:400 15px/1.6 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.5);margin:8px 0 0;">Industriepark 10<br>8701 PN Bolsward</p>
     </div>
   </div>
-  <div style="display:flex;justify-content:space-between;align-items:center;padding-top:32px;margin-top:32px;border-top:1px solid rgba(255,255,255,.1);font:400 14px/1.4 \'Source Sans 3\',sans-serif;">
+  <div style="display:flex;justify-content:space-between;align-items:center;padding-top:32px;margin-top:32px;border-top:1px solid rgba(255,255,255,.1);font:400 14px/1.4 \'Acumin Pro\',sans-serif;">
     <div style="display:flex;gap:24px;">
       <a href="/contact/" style="color:rgba(255,255,255,.45);text-decoration:none;">Terms &amp; conditions</a>
       <a href="/contact/" style="color:rgba(255,255,255,.45);text-decoration:none;">Privacy</a>
@@ -363,7 +363,7 @@ $single_data = [
     el_section(
         [el_col( 100, [
             el_w( 'text-editor', [
-                'editor' => '<p style="font:400 14px/1.4 \'Source Sans 3\',sans-serif;"><a href="/projects/" style="color:#E40034;text-decoration:none;">Projects</a> / <span style="color:#7A7A82;">{post_title_placeholder}</span></p>',
+                'editor' => '<p style="font:400 14px/1.4 \'Acumin Pro\',sans-serif;"><a href="/projects/" style="color:#E40034;text-decoration:none;">Projects</a> / <span style="color:#7A7A82;">{post_title_placeholder}</span></p>',
                 '__dynamic__' => [],
             ] ),
             el_w( 'shortcode', ['shortcode' => '[oem_tag_badge]'] ),
@@ -371,13 +371,13 @@ $single_data = [
                 'header_size' => 'h1',
                 'title_color' => '#1B1B1F',
                 'typography_typography' => 'custom',
-                'typography_font_family' => 'Source Sans 3',
+                'typography_font_family' => 'Acumin Pro',
                 'typography_font_weight' => '700',
                 'typography_font_size' => ['unit' => 'px', 'size' => 42, 'sizes' => []],
                 'typography_line_height' => ['unit' => 'em', 'size' => 1.1, 'sizes' => []],
             ] ),
             el_w( 'html', [
-                'html' => '<?php $v = get_post_meta(get_the_ID(),"_oem_vessel",true); if($v): ?><p style="font:400 17px/1.65 \'Source Sans 3\',sans-serif;color:#7A7A82;margin:8px 0 0;"><?php echo esc_html($v); ?></p><?php endif; ?>',
+                'html' => '<?php $v = get_post_meta(get_the_ID(),"_oem_vessel",true); if($v): ?><p style="font:400 17px/1.65 \'Acumin Pro\',sans-serif;color:#7A7A82;margin:8px 0 0;"><?php echo esc_html($v); ?></p><?php endif; ?>',
             ] ),
         ] )],
         ['padding' => ['unit' => 'px', 'top' => '72', 'right' => '0', 'bottom' => '32', 'left' => '0', 'isLinked' => false]]
@@ -406,7 +406,7 @@ $single_data = [
                 ] ),
                 el_w( 'theme-post-content', [
                     'typography_typography' => 'custom',
-                    'typography_font_family' => 'Source Sans 3',
+                    'typography_font_family' => 'Acumin Pro',
                     'typography_font_size' => ['unit' => 'px', 'size' => 17, 'sizes' => []],
                     'typography_line_height' => ['unit' => 'em', 'size' => 1.65, 'sizes' => []],
                     'text_color' => '#4D4D54',
@@ -420,10 +420,10 @@ $single_data = [
             el_col( 40, [
                 el_w( 'html', [
                     'html' => '<div style="background:#F6F6F7;border-radius:8px;padding:28px;border-top:4px solid #E40034;">
-<h3 style="font:700 20px/1.3 \'Source Sans 3\',sans-serif;color:#1B1B1F;margin:0 0 20px;">Fact sheet</h3>
+<h3 style="font:700 20px/1.3 \'Acumin Pro\',sans-serif;color:#1B1B1F;margin:0 0 20px;">Fact sheet</h3>
 [oem_facts]
 <div style="margin-top:24px;">
-<a href="/contact/" style="display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:#E40034;color:#fff;border-radius:6px;font:600 15px/1 \'Source Sans 3\',sans-serif;text-decoration:none;width:100%;justify-content:center;">Discuss a similar scope <i class="fas fa-arrow-right"></i></a>
+<a href="/contact/" style="display:inline-flex;align-items:center;gap:8px;padding:14px 24px;background:#E40034;color:#fff;border-radius:6px;font:700 15px/1 \'Acumin Pro\',sans-serif;text-decoration:none;width:100%;justify-content:center;">Discuss a similar scope <i class="fas fa-arrow-right"></i></a>
 </div></div>',
                 ] ),
             ] ),
@@ -530,8 +530,8 @@ if ( $home_id ) {
                 el_spacer( 24 ),
                 el_w( 'html', [
                     'html' => '<div style="display:flex;gap:12px;flex-wrap:wrap;">
-<a href="/contact/" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:#E40034;color:#fff;border-radius:6px;font:600 16px/1 \'Source Sans 3\',sans-serif;text-decoration:none;">Request a survey <i class="fas fa-arrow-right"></i></a>
-<a href="/oem-connect/" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.35);border-radius:6px;font:600 16px/1 \'Source Sans 3\',sans-serif;text-decoration:none;">OEM Connect</a>
+<a href="/contact/" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:#E40034;color:#fff;border-radius:6px;font:700 16px/1 \'Acumin Pro\',sans-serif;text-decoration:none;">Request a survey <i class="fas fa-arrow-right"></i></a>
+<a href="/oem-connect/" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.35);border-radius:6px;font:700 16px/1 \'Acumin Pro\',sans-serif;text-decoration:none;">OEM Connect</a>
 </div>',
                 ] ),
             ] )],
@@ -597,7 +597,7 @@ if ( $home_id ) {
                     'typography_font_size' => ['unit' => 'px', 'size' => 36, 'sizes' => []],
                 ] ),
                 el_w( 'html', [
-                    'html' => '</div><a href="/projects/" style="font:600 15px/1 \'Source Sans 3\',sans-serif;color:#E40034;text-decoration:none;">All projects <i class="fas fa-arrow-right"></i></a></div>',
+                    'html' => '</div><a href="/projects/" style="font:700 15px/1 \'Acumin Pro\',sans-serif;color:#E40034;text-decoration:none;">All projects <i class="fas fa-arrow-right"></i></a></div>',
                 ] ),
                 el_spacer( 24 ),
                 el_w( 'posts', [
@@ -638,9 +638,9 @@ if ( $home_id ) {
                 el_col( 40, [
                     el_w( 'html', [
                         'html' => '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;">
-<div style="text-align:center;"><p style="font:700 26px/1.2 \'Source Sans 3\',sans-serif;color:#fff;margin:0;">3 bases</p><p style="font:300 14px/1.45 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.55);margin:4px 0 0;">Bolsward &middot; Barcelona &middot; Fort Lauderdale</p></div>
-<div style="text-align:center;"><p style="font:700 26px/1.2 \'Source Sans 3\',sans-serif;color:#fff;margin:0;">&lt; 1 day</p><p style="font:300 14px/1.45 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.55);margin:4px 0 0;">Average remote-response time</p></div>
-<div style="text-align:center;"><p style="font:700 26px/1.2 \'Source Sans 3\',sans-serif;color:#fff;margin:0;">Per serial</p><p style="font:300 14px/1.45 \'Source Sans 3\',sans-serif;color:rgba(255,255,255,.55);margin:4px 0 0;">Full service history by equipment serial</p></div>
+<div style="text-align:center;"><p style="font:700 26px/1.2 \'Acumin Pro\',sans-serif;color:#fff;margin:0;">3 bases</p><p style="font:300 14px/1.45 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.55);margin:4px 0 0;">Bolsward &middot; Barcelona &middot; Fort Lauderdale</p></div>
+<div style="text-align:center;"><p style="font:700 26px/1.2 \'Acumin Pro\',sans-serif;color:#fff;margin:0;">&lt; 1 day</p><p style="font:300 14px/1.45 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.55);margin:4px 0 0;">Average remote-response time</p></div>
+<div style="text-align:center;"><p style="font:700 26px/1.2 \'Acumin Pro\',sans-serif;color:#fff;margin:0;">Per serial</p><p style="font:300 14px/1.45 \'Acumin Pro\',sans-serif;color:rgba(255,255,255,.55);margin:4px 0 0;">Full service history by equipment serial</p></div>
 </div>',
                     ] ),
                 ] ),
@@ -665,9 +665,9 @@ function oem_build_service_cards_html( $services ) {
     foreach ( $services as $s ) {
         $html .= '<a href="/what-we-do/' . esc_attr( $s['slug'] ) . '/" style="display:block;padding:32px;background:#fff;border-radius:8px;text-decoration:none;border:1px solid #ECECEE;transition:border-color .2s;">
 <div style="width:48px;height:48px;border-radius:50%;background:rgba(228,0,52,.08);display:flex;align-items:center;justify-content:center;margin-bottom:16px;"><i class="fas ' . esc_attr( $s['icon'] ) . '" style="font-size:20px;color:#E40034;"></i></div>
-<h3 style="font:700 18px/1.25 \'Source Sans 3\',sans-serif;color:#1B1B1F;margin:0 0 8px;">' . esc_html( $s['title'] ) . '</h3>
-<p style="font:400 15px/1.55 \'Source Sans 3\',sans-serif;color:#4D4D54;margin:0 0 16px;">' . esc_html( $s['short'] ) . '</p>
-<span style="font:600 14px/1 \'Source Sans 3\',sans-serif;color:#E40034;">Read more <i class="fas fa-arrow-right"></i></span>
+<h3 style="font:700 18px/1.25 \'Acumin Pro\',sans-serif;color:#1B1B1F;margin:0 0 8px;">' . esc_html( $s['title'] ) . '</h3>
+<p style="font:400 15px/1.55 \'Acumin Pro\',sans-serif;color:#4D4D54;margin:0 0 16px;">' . esc_html( $s['short'] ) . '</p>
+<span style="font:700 14px/1 \'Acumin Pro\',sans-serif;color:#E40034;">Read more <i class="fas fa-arrow-right"></i></span>
 </a>';
     }
     $html .= '</div>';
@@ -720,13 +720,13 @@ foreach ( $services as $idx => $s ) {
 
     $scope_html = '<ul style="list-style:none;padding:0;margin:0;">';
     foreach ( $s['scope'] as $item ) {
-        $scope_html .= '<li style="padding:8px 0 8px 20px;border-bottom:1px solid #ECECEE;position:relative;font:400 16px/1.6 \'Source Sans 3\',sans-serif;color:#4D4D54;"><span style="position:absolute;left:0;color:#E40034;">&#x2022;</span>' . esc_html( $item ) . '</li>';
+        $scope_html .= '<li style="padding:8px 0 8px 20px;border-bottom:1px solid #ECECEE;position:relative;font:400 16px/1.6 \'Acumin Pro\',sans-serif;color:#4D4D54;"><span style="position:absolute;left:0;color:#E40034;">&#x2022;</span>' . esc_html( $item ) . '</li>';
     }
     $scope_html .= '</ul>';
 
     $specs_html = '<table style="width:100%;border-collapse:collapse;">';
     foreach ( $s['specs'] as $spec ) {
-        $specs_html .= '<tr><td style="padding:10px 16px 10px 0;border-bottom:1px solid #ECECEE;font:600 15px/1.4 \'Source Sans 3\',sans-serif;color:#1B1B1F;white-space:nowrap;">' . esc_html( $spec['k'] ) . '</td><td style="padding:10px 0;border-bottom:1px solid #ECECEE;font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:#4D4D54;">' . esc_html( $spec['v'] ) . '</td></tr>';
+        $specs_html .= '<tr><td style="padding:10px 16px 10px 0;border-bottom:1px solid #ECECEE;font:700 15px/1.4 \'Acumin Pro\',sans-serif;color:#1B1B1F;white-space:nowrap;">' . esc_html( $spec['k'] ) . '</td><td style="padding:10px 0;border-bottom:1px solid #ECECEE;font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:#4D4D54;">' . esc_html( $spec['v'] ) . '</td></tr>';
     }
     $specs_html .= '</table>';
 
@@ -736,9 +736,9 @@ foreach ( $services as $idx => $s ) {
     foreach ( $related as $r ) {
         $related_html .= '<a href="/what-we-do/' . esc_attr( $r['slug'] ) . '/" style="display:block;padding:32px;background:#fff;border-radius:8px;text-decoration:none;border:1px solid #ECECEE;">
 <div style="width:48px;height:48px;border-radius:50%;background:rgba(228,0,52,.08);display:flex;align-items:center;justify-content:center;margin-bottom:16px;"><i class="fas ' . esc_attr( $r['icon'] ) . '" style="font-size:20px;color:#E40034;"></i></div>
-<h3 style="font:700 18px/1.25 \'Source Sans 3\',sans-serif;color:#1B1B1F;margin:0 0 8px;">' . esc_html( $r['title'] ) . '</h3>
-<p style="font:400 15px/1.55 \'Source Sans 3\',sans-serif;color:#4D4D54;margin:0 0 16px;">' . esc_html( $r['short'] ) . '</p>
-<span style="font:600 14px/1 \'Source Sans 3\',sans-serif;color:#E40034;">Read more <i class="fas fa-arrow-right"></i></span></a>';
+<h3 style="font:700 18px/1.25 \'Acumin Pro\',sans-serif;color:#1B1B1F;margin:0 0 8px;">' . esc_html( $r['title'] ) . '</h3>
+<p style="font:400 15px/1.55 \'Acumin Pro\',sans-serif;color:#4D4D54;margin:0 0 16px;">' . esc_html( $r['short'] ) . '</p>
+<span style="font:700 14px/1 \'Acumin Pro\',sans-serif;color:#E40034;">Read more <i class="fas fa-arrow-right"></i></span></a>';
     }
     $related_html .= '</div>';
 
@@ -748,7 +748,7 @@ foreach ( $services as $idx => $s ) {
             [
                 el_col( 50, [
                     el_w( 'text-editor', [
-                        'editor' => '<p style="font:400 14px/1.4 \'Source Sans 3\',sans-serif;"><a href="/what-we-do/" style="color:#E40034;text-decoration:none;">What we do</a> / <span style="color:#7A7A82;">' . esc_html( $s['title'] ) . '</span></p>',
+                        'editor' => '<p style="font:400 14px/1.4 \'Acumin Pro\',sans-serif;"><a href="/what-we-do/" style="color:#E40034;text-decoration:none;">What we do</a> / <span style="color:#7A7A82;">' . esc_html( $s['title'] ) . '</span></p>',
                     ] ),
                     el_eyebrow( $s['eyebrow'] ),
                     el_heading( $s['headline'], 'h1', [
@@ -843,9 +843,9 @@ if ( $connect_page ) {
     $steps_html = '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;">';
     foreach ( $steps as $st ) {
         $steps_html .= '<div style="border-top:3px solid #E40034;padding-top:20px;">
-<div style="font:700 28px/1 \'Source Sans 3\',sans-serif;color:#E40034;margin-bottom:12px;">' . $st['n'] . '</div>
-<h3 style="font:700 18px/1.25 \'Source Sans 3\',sans-serif;color:#1B1B1F;margin:0 0 8px;">' . esc_html( $st['title'] ) . '</h3>
-<p style="font:400 15px/1.55 \'Source Sans 3\',sans-serif;color:#4D4D54;margin:0;">' . esc_html( $st['desc'] ) . '</p></div>';
+<div style="font:700 28px/1 \'Acumin Pro\',sans-serif;color:#E40034;margin-bottom:12px;">' . $st['n'] . '</div>
+<h3 style="font:700 18px/1.25 \'Acumin Pro\',sans-serif;color:#1B1B1F;margin:0 0 8px;">' . esc_html( $st['title'] ) . '</h3>
+<p style="font:400 15px/1.55 \'Acumin Pro\',sans-serif;color:#4D4D54;margin:0;">' . esc_html( $st['desc'] ) . '</p></div>';
     }
     $steps_html .= '</div>';
 
@@ -879,8 +879,8 @@ if ( $connect_page ) {
                         implode( '', array_map( function($f) {
                             return '<div style="padding:24px 0;">
 <div style="width:48px;height:48px;border-radius:50%;background:rgba(228,0,52,.08);display:flex;align-items:center;justify-content:center;margin-bottom:16px;"><i class="fas ' . esc_attr( $f['icon'] ) . '" style="font-size:20px;color:#E40034;"></i></div>
-<h3 style="font:700 18px/1.25 \'Source Sans 3\',sans-serif;color:#1B1B1F;margin:0 0 8px;">' . esc_html( $f['title'] ) . '</h3>
-<p style="font:400 15px/1.55 \'Source Sans 3\',sans-serif;color:#4D4D54;margin:0;">' . esc_html( $f['desc'] ) . '</p></div>';
+<h3 style="font:700 18px/1.25 \'Acumin Pro\',sans-serif;color:#1B1B1F;margin:0 0 8px;">' . esc_html( $f['title'] ) . '</h3>
+<p style="font:400 15px/1.55 \'Acumin Pro\',sans-serif;color:#4D4D54;margin:0;">' . esc_html( $f['desc'] ) . '</p></div>';
                         }, $features ) ) .
                     '</div>',
                 ] ),
@@ -918,19 +918,19 @@ function build_team_page_data( $group, $active_tab ) {
     foreach ( $group['people'] as $person ) {
         $people_html .= '<div style="text-align:center;">
 <div style="width:120px;height:120px;border-radius:50%;background:#ECECEE;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;"><i class="fas fa-user" style="font-size:32px;color:#C9C9CD;"></i></div>
-<h3 style="font:700 17px/1.3 \'Source Sans 3\',sans-serif;color:#1B1B1F;margin:0 0 4px;">' . esc_html( $person['name'] ) . '</h3>
-<p style="font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:#4D4D54;margin:0;">' . esc_html( $person['role'] ) . '</p>
-<p style="font:400 14px/1.4 \'Source Sans 3\',sans-serif;color:#A4A4AA;margin:4px 0 0;">' . esc_html( $person['base'] ) . '</p></div>';
+<h3 style="font:700 17px/1.3 \'Acumin Pro\',sans-serif;color:#1B1B1F;margin:0 0 4px;">' . esc_html( $person['name'] ) . '</h3>
+<p style="font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:#4D4D54;margin:0;">' . esc_html( $person['role'] ) . '</p>
+<p style="font:400 14px/1.4 \'Acumin Pro\',sans-serif;color:#A4A4AA;margin:4px 0 0;">' . esc_html( $person['base'] ) . '</p></div>';
     }
     $people_html .= '</div>';
 
     $tabs_html = '<div style="display:flex;gap:8px;margin-top:24px;">';
     if ( $active_tab === 'Team' ) {
-        $tabs_html .= '<span style="padding:8px 20px;background:#1B1B1F;color:#fff;border-radius:20px;font:600 14px/1 \'Source Sans 3\',sans-serif;">Team</span>';
-        $tabs_html .= '<a href="/team-sub/" style="padding:8px 20px;background:#ECECEE;color:#4D4D54;border-radius:20px;font:600 14px/1 \'Source Sans 3\',sans-serif;text-decoration:none;">Team Sub</a>';
+        $tabs_html .= '<span style="padding:8px 20px;background:#1B1B1F;color:#fff;border-radius:20px;font:700 14px/1 \'Acumin Pro\',sans-serif;">Team</span>';
+        $tabs_html .= '<a href="/team-sub/" style="padding:8px 20px;background:#ECECEE;color:#4D4D54;border-radius:20px;font:700 14px/1 \'Acumin Pro\',sans-serif;text-decoration:none;">Team Sub</a>';
     } else {
-        $tabs_html .= '<a href="/team/" style="padding:8px 20px;background:#ECECEE;color:#4D4D54;border-radius:20px;font:600 14px/1 \'Source Sans 3\',sans-serif;text-decoration:none;">Team</a>';
-        $tabs_html .= '<span style="padding:8px 20px;background:#1B1B1F;color:#fff;border-radius:20px;font:600 14px/1 \'Source Sans 3\',sans-serif;">Team Sub</span>';
+        $tabs_html .= '<a href="/team/" style="padding:8px 20px;background:#ECECEE;color:#4D4D54;border-radius:20px;font:700 14px/1 \'Acumin Pro\',sans-serif;text-decoration:none;">Team</a>';
+        $tabs_html .= '<span style="padding:8px 20px;background:#1B1B1F;color:#fff;border-radius:20px;font:700 14px/1 \'Acumin Pro\',sans-serif;">Team Sub</span>';
     }
     $tabs_html .= '</div>';
 
@@ -981,9 +981,9 @@ if ( $careers_page ) {
     $vac_html = '';
     foreach ( $vacancies as $v ) {
         $vac_html .= '<a href="/contact/" style="display:grid;grid-template-columns:1.5fr 1fr 0.8fr auto;gap:16px;align-items:center;padding:20px 0;border-bottom:1px solid #ECECEE;text-decoration:none;">
-<span style="font:600 17px/1.3 \'Source Sans 3\',sans-serif;color:#1B1B1F;">' . esc_html( $v['title'] ) . '</span>
-<span style="font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:#7A7A82;">' . esc_html( $v['location'] ) . '</span>
-<span style="font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:#7A7A82;">' . esc_html( $v['type'] ) . '</span>
+<span style="font:700 17px/1.3 \'Acumin Pro\',sans-serif;color:#1B1B1F;">' . esc_html( $v['title'] ) . '</span>
+<span style="font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:#7A7A82;">' . esc_html( $v['location'] ) . '</span>
+<span style="font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:#7A7A82;">' . esc_html( $v['type'] ) . '</span>
 <span style="color:#E40034;"><i class="fas fa-arrow-right"></i></span></a>';
     }
 
@@ -1027,8 +1027,8 @@ if ( $careers_page ) {
             [el_col( 100, [
                 el_w( 'html', [
                     'html' => '<div style="background:#F6F6F7;border-radius:8px;padding:40px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;">
-<div><h3 style="font:700 22px/1.2 \'Source Sans 3\',sans-serif;color:#1B1B1F;margin:0 0 4px;">Don\'t see your role?</h3><p style="font:400 16px/1.5 \'Source Sans 3\',sans-serif;color:#4D4D54;margin:0;">Send an open application — we\'re always interested in experienced marine engineers.</p></div>
-<a href="mailto:info@oemyachtservice.com" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:#E40034;color:#fff;border-radius:6px;font:600 16px/1 \'Source Sans 3\',sans-serif;text-decoration:none;white-space:nowrap;">Open application <i class="fas fa-arrow-right"></i></a></div>',
+<div><h3 style="font:700 22px/1.2 \'Acumin Pro\',sans-serif;color:#1B1B1F;margin:0 0 4px;">Don\'t see your role?</h3><p style="font:400 16px/1.5 \'Acumin Pro\',sans-serif;color:#4D4D54;margin:0;">Send an open application — we\'re always interested in experienced marine engineers.</p></div>
+<a href="mailto:info@oemyachtservice.com" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:#E40034;color:#fff;border-radius:6px;font:700 16px/1 \'Acumin Pro\',sans-serif;text-decoration:none;white-space:nowrap;">Open application <i class="fas fa-arrow-right"></i></a></div>',
                 ] ),
             ] )],
             ['padding' => pad(0, 80)]
@@ -1045,10 +1045,10 @@ if ( $contact_page ) {
     $loc_html = '';
     foreach ( $locations as $loc ) {
         $loc_html .= '<div style="margin-bottom:32px;">
-<h3 style="font:700 18px/1.25 \'Source Sans 3\',sans-serif;color:#1B1B1F;margin:0 0 4px;">' . esc_html( $loc['city'] ) . '</h3>
-<p style="font:400 14px/1.4 \'Source Sans 3\',sans-serif;color:#E40034;margin:0 0 8px;">' . esc_html( $loc['role'] ) . '</p>
-<p style="font:400 15px/1.55 \'Source Sans 3\',sans-serif;color:#4D4D54;margin:0 0 4px;">' . esc_html( $loc['address'] ) . '</p>
-<a href="' . esc_attr( $loc['tel_href'] ) . '" style="font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:#E40034;text-decoration:none;">' . esc_html( $loc['tel'] ) . '</a></div>';
+<h3 style="font:700 18px/1.25 \'Acumin Pro\',sans-serif;color:#1B1B1F;margin:0 0 4px;">' . esc_html( $loc['city'] ) . '</h3>
+<p style="font:400 14px/1.4 \'Acumin Pro\',sans-serif;color:#E40034;margin:0 0 8px;">' . esc_html( $loc['role'] ) . '</p>
+<p style="font:400 15px/1.55 \'Acumin Pro\',sans-serif;color:#4D4D54;margin:0 0 4px;">' . esc_html( $loc['address'] ) . '</p>
+<a href="' . esc_attr( $loc['tel_href'] ) . '" style="font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:#E40034;text-decoration:none;">' . esc_html( $loc['tel'] ) . '</a></div>';
     }
 
     $discipline_options = '';
@@ -1248,12 +1248,18 @@ flush_rewrite_rules();
 
 echo "\n=== Migration complete! ===\n";
 echo "Next steps:\n";
-echo "  1. Open any page in Elementor editor to verify visual editing works\n";
-echo "  2. Replace the HTML header template with proper Elementor Pro widgets:\n";
+echo "  1. Set up Adobe Fonts for Acumin Pro:\n";
+echo "     a. Go to https://fonts.adobe.com and create a Web Project\n";
+echo "     b. Add Acumin Pro with weights: Light (300), Regular (400), Bold (700)\n";
+echo "     c. Copy the Project ID (e.g. 'abc1def')\n";
+echo "     d. Add to wp-config.php: define( 'OEM_TYPEKIT_ID', 'your-project-id' );\n";
+echo "     e. Or: Elementor → Settings → Integrations → Adobe Fonts → enter Project ID\n";
+echo "  2. Open any page in Elementor editor to verify visual editing works\n";
+echo "  3. Replace the HTML header template with proper Elementor Pro widgets:\n";
 echo "     - Site Logo widget\n";
 echo "     - Nav Menu widget (location: primary)\n";
 echo "     - Button widget (Contact CTA)\n";
-echo "  3. Same for the footer — replace HTML widget with Elementor widgets\n";
-echo "  4. Check responsive preview for all pages\n";
-echo "  5. Verify the contact form sends emails\n";
-echo "  6. Delete functions-backup.php when satisfied\n";
+echo "  4. Same for the footer — replace HTML widget with Elementor widgets\n";
+echo "  5. Check responsive preview for all pages\n";
+echo "  6. Verify the contact form sends emails\n";
+echo "  7. Delete functions-backup.php when satisfied\n";

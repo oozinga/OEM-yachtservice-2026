@@ -20,6 +20,16 @@ add_filter( 'upload_mimes', function( $mimes ) {
     return $mimes;
 });
 
+// --- Adobe Fonts (Acumin Pro 300/400/700) ---
+
+add_action( 'wp_enqueue_scripts', function() {
+    // Replace YOUR_PROJECT_ID with your Adobe Fonts web project ID from https://fonts.adobe.com
+    $typekit_id = defined( 'OEM_TYPEKIT_ID' ) ? OEM_TYPEKIT_ID : '';
+    if ( $typekit_id ) {
+        wp_enqueue_style( 'adobe-fonts', 'https://use.typekit.net/' . $typekit_id . '.css', [], null );
+    }
+});
+
 // --- Custom Post Type: Projects ---
 
 add_action( 'init', function() {
@@ -142,7 +152,7 @@ add_shortcode( 'oem_delivered', function() {
     if ( ! is_array( $delivered ) || empty( $delivered ) ) return '';
     $html = '<ul style="list-style:none;padding:0;margin:0;">';
     foreach ( $delivered as $item ) {
-        $html .= '<li style="padding:8px 0 8px 20px;border-bottom:1px solid #ECECEE;position:relative;font:400 16px/1.6 \'Source Sans 3\',sans-serif;color:#4D4D54;">';
+        $html .= '<li style="padding:8px 0 8px 20px;border-bottom:1px solid #ECECEE;position:relative;font:400 16px/1.6 \'Acumin Pro\',sans-serif;color:#4D4D54;">';
         $html .= '<span style="position:absolute;left:0;color:#E40034;">&#x2022;</span>';
         $html .= esc_html( $item ) . '</li>';
     }
@@ -156,8 +166,8 @@ add_shortcode( 'oem_facts', function() {
     $html = '';
     foreach ( $facts as $f ) {
         $html .= '<div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #ECECEE;">';
-        $html .= '<span style="font:600 15px/1.4 \'Source Sans 3\',sans-serif;color:#1B1B1F;">' . esc_html( $f['k'] ) . '</span>';
-        $html .= '<span style="font:400 15px/1.4 \'Source Sans 3\',sans-serif;color:#4D4D54;">' . esc_html( $f['v'] ) . '</span>';
+        $html .= '<span style="font:700 15px/1.4 \'Acumin Pro\',sans-serif;color:#1B1B1F;">' . esc_html( $f['k'] ) . '</span>';
+        $html .= '<span style="font:400 15px/1.4 \'Acumin Pro\',sans-serif;color:#4D4D54;">' . esc_html( $f['v'] ) . '</span>';
         $html .= '</div>';
     }
     return $html;

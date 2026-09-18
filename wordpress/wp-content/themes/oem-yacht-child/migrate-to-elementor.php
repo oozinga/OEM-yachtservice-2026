@@ -265,7 +265,7 @@ function create_theme_template( $title, $type, $conditions, $data ) {
 }
 
 // --- HEADER ---
-$logo_url = get_stylesheet_directory_uri() . '/assets/logo-red.svg';
+$logo_url = get_stylesheet_directory_uri() . '/assets/logo-full.png';
 
 $header_data = [
     el_section(
@@ -300,7 +300,7 @@ create_theme_template( 'OEM Header', 'header', ['include/general'], $header_data
 // This ensures full visual editing capability.
 
 // --- FOOTER ---
-$logo_white = get_stylesheet_directory_uri() . '/assets/logo-white.svg';
+$logo_white = get_stylesheet_directory_uri() . '/assets/logo-mark.png';
 
 $footer_html = '<div style="max-width:1240px;margin:0 auto;padding:64px 24px 32px;">
   <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:32px;">

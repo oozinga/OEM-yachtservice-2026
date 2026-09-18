@@ -42,6 +42,152 @@ add_filter( 'body_class', function( $classes ) {
     return $classes;
 });
 
+// --- Custom Post Type: Projects ---
+
+add_action( 'init', function() {
+    register_post_type( 'oem_project', [
+        'labels' => [
+            'name'               => 'Projects',
+            'singular_name'      => 'Project',
+            'add_new'            => 'Add project',
+            'add_new_item'       => 'Add new project',
+            'edit_item'          => 'Edit project',
+            'new_item'           => 'New project',
+            'view_item'          => 'View project',
+            'search_items'       => 'Search projects',
+            'not_found'          => 'No projects found',
+            'not_found_in_trash' => 'No projects in trash',
+            'all_items'          => 'All projects',
+            'menu_name'          => 'Projects',
+        ],
+        'public'       => true,
+        'has_archive'  => true,
+        'rewrite'      => ['slug' => 'projects', 'with_front' => false],
+        'menu_icon'    => 'dashicons-portfolio',
+        'supports'     => ['title', 'editor', 'thumbnail'],
+        'show_in_rest' => true,
+    ]);
+});
+
+add_action( 'add_meta_boxes', function() {
+    add_meta_box(
+        'oem_project_fields',
+        'Project details',
+        'oem_project_meta_box_render',
+        'oem_project',
+        'normal',
+        'high'
+    );
+});
+
+function oem_project_meta_box_render( $post ) {
+    wp_nonce_field( 'oem_project_meta', 'oem_project_nonce' );
+    $tag       = get_post_meta( $post->ID, '_oem_tag', true );
+    $vessel    = get_post_meta( $post->ID, '_oem_vessel', true );
+    $delivered = get_post_meta( $post->ID, '_oem_delivered', true );
+    $facts     = get_post_meta( $post->ID, '_oem_facts', true );
+    if ( ! is_array( $delivered ) ) $delivered = [];
+    if ( ! is_array( $facts ) ) $facts = array_fill( 0, 5, ['k' => '', 'v' => ''] );
+    ?>
+    <table class="form-table">
+        <tr>
+            <th><label for="oem_tag">Tag</label></th>
+            <td><input type="text" id="oem_tag" name="oem_tag" value="<?php echo esc_attr( $tag ); ?>" class="regular-text" placeholder="e.g. Refit, Service, Newbuild support"></td>
+        </tr>
+        <tr>
+            <th><label for="oem_vessel">Vessel</label></th>
+            <td><input type="text" id="oem_vessel" name="oem_vessel" value="<?php echo esc_attr( $vessel ); ?>" class="large-text" placeholder="e.g. 85 m fleet support vessel, Northern Europe"></td>
+        </tr>
+        <tr>
+            <th><label for="oem_delivered">Delivered</label></th>
+            <td>
+                <textarea id="oem_delivered" name="oem_delivered" rows="5" class="large-text" placeholder="One item per line"><?php echo esc_textarea( implode( "\n", $delivered ) ); ?></textarea>
+                <p class="description">One deliverable per line.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>Fact sheet</th>
+            <td>
+                <?php for ( $i = 0; $i < 5; $i++ ) :
+                    $fk = $facts[$i]['k'] ?? '';
+                    $fv = $facts[$i]['v'] ?? '';
+                ?>
+                <div style="display:flex;gap:8px;margin-bottom:6px;">
+                    <input type="text" name="oem_facts_k[]" value="<?php echo esc_attr( $fk ); ?>" placeholder="Label" style="width:140px;">
+                    <input type="text" name="oem_facts_v[]" value="<?php echo esc_attr( $fv ); ?>" placeholder="Value" style="flex:1;">
+                </div>
+                <?php endfor; ?>
+            </td>
+        </tr>
+    </table>
+    <?php
+}
+
+add_action( 'save_post_oem_project', function( $post_id ) {
+    if ( ! isset( $_POST['oem_project_nonce'] ) || ! wp_verify_nonce( $_POST['oem_project_nonce'], 'oem_project_meta' ) ) return;
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+
+    if ( isset( $_POST['oem_tag'] ) )
+        update_post_meta( $post_id, '_oem_tag', sanitize_text_field( $_POST['oem_tag'] ) );
+    if ( isset( $_POST['oem_vessel'] ) )
+        update_post_meta( $post_id, '_oem_vessel', sanitize_text_field( $_POST['oem_vessel'] ) );
+    if ( isset( $_POST['oem_delivered'] ) ) {
+        $lines = array_filter( array_map( 'trim', explode( "\n", sanitize_textarea_field( $_POST['oem_delivered'] ) ) ) );
+        update_post_meta( $post_id, '_oem_delivered', array_values( $lines ) );
+    }
+    if ( isset( $_POST['oem_facts_k'] ) && isset( $_POST['oem_facts_v'] ) ) {
+        $facts = [];
+        foreach ( $_POST['oem_facts_k'] as $i => $k ) {
+            $k = sanitize_text_field( $k );
+            $v = sanitize_text_field( $_POST['oem_facts_v'][$i] ?? '' );
+            if ( $k || $v ) $facts[] = ['k' => $k, 'v' => $v];
+        }
+        update_post_meta( $post_id, '_oem_facts', $facts );
+    }
+});
+
+// Sort projects by menu_order on archive
+add_action( 'pre_get_posts', function( $query ) {
+    if ( ! is_admin() && $query->is_main_query() && is_post_type_archive( 'oem_project' ) ) {
+        $query->set( 'orderby', 'menu_order' );
+        $query->set( 'order', 'ASC' );
+        $query->set( 'posts_per_page', -1 );
+    }
+});
+
+// Shortcode: [oem_projects_grid count="4"]
+add_shortcode( 'oem_projects_grid', function( $atts ) {
+    $atts = shortcode_atts( ['count' => -1, 'columns' => '3'], $atts );
+    $q = new WP_Query([
+        'post_type'      => 'oem_project',
+        'posts_per_page' => (int) $atts['count'],
+        'orderby'        => 'menu_order date',
+        'order'          => 'ASC',
+    ]);
+    if ( ! $q->have_posts() ) return '';
+    $cols = $atts['columns'] === '4' ? ' oem-card-grid--4' : '';
+    $out = '<div class="oem-card-grid' . $cols . '">';
+    while ( $q->have_posts() ) : $q->the_post();
+        $tag    = get_post_meta( get_the_ID(), '_oem_tag', true );
+        $vessel = get_post_meta( get_the_ID(), '_oem_vessel', true );
+        $out .= '<a href="' . get_permalink() . '" class="oem-project-card">';
+        if ( has_post_thumbnail() ) {
+            $out .= '<div class="oem-project-card__image">' . get_the_post_thumbnail( null, 'medium_large' ) . '</div>';
+        } else {
+            $out .= '<div class="oem-project-card__image"><i class="fa-solid fa-image"></i></div>';
+        }
+        $out .= '<div class="oem-project-card__tag">' . esc_html( $tag ) . '</div>';
+        $out .= '<h3 class="oem-project-card__title">' . get_the_title() . '</h3>';
+        if ( $vessel && $atts['columns'] !== '4' ) {
+            $out .= '<p class="oem-project-card__vessel">' . esc_html( $vessel ) . '</p>';
+        }
+        $out .= '</a>';
+    endwhile;
+    wp_reset_postdata();
+    $out .= '</div>';
+    return $out;
+});
+
 class OEM_Nav_Walker extends Walker_Nav_Menu {
     public function start_lvl( &$output, $depth = 0, $args = null ) {
         $output .= '<ul class="sub-menu">';

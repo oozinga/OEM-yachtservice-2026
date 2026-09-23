@@ -1,0 +1,23 @@
+{
+  "skill_name": "wp-elementor-site-builder",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Ik heb een ontwerp voor een tandartspraktijk website. De kleuren zijn donkerblauw (#1A3A5C) en mintgroen (#4ECDC4), het font is Inter via Google Fonts. De site heeft 4 pagina's: Home (hero met foto, 3 diensten cards, testimonial), Over ons (team foto's + tekst), Behandelingen (6 cards met icoon en beschrijving), en Contact (formulier + adresgegevens + Google Maps embed). Maak hier een complete Elementor WordPress site van die ik kan importeren.",
+      "expected_output": "Een child theme met style.css, functions.php (alleen font loading + theme setup), en een setup-elementor.php script dat 4 pagina's aanmaakt met correcte _elementor_data JSON, een header en footer Theme Builder template, en de Elementor Global Kit configureert met de juiste kleuren en fonts. Plus een WordPress XML export en theme ZIP.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Ik heb een portfolio website nodig voor een fotograaf. Design system: zwart (#000000) en wit (#FFFFFF) met accent oranje (#FF6B35). Font: Playfair Display voor koppen, Lato voor body (Google Fonts). Er moet een Custom Post Type 'portfolio_item' zijn met velden: categorie (text), camera (text), en locatie (text). Homepage met hero, portfolio grid (Posts widget), en about sectie. Plus een archive en single template voor de portfolio items. Alles in Elementor, geen custom PHP templates.",
+      "expected_output": "Child theme met functions.php die CPT 'portfolio_item' registreert met meta box voor de 3 velden, Google Fonts laadt. Setup script dat Global Kit configureert, 4 Theme Builder templates maakt (header, footer, single portfolio, archive portfolio), homepage met Elementor data, en de Dynamic Tags gebruikt voor de single template. WordPress export + ZIP.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Ik wil een eenvoudige one-pager voor mijn restaurant. Scrollende pagina met secties: hero met achtergrondafbeelding, menu kaart (2 kolommen met gerechten en prijzen), over ons met foto, en een contactsectie met openingstijden en een formulier. Kleuren: donkergroen (#2D5016) en crème (#FFF8E7). Font: Cormorant Garamond voor koppen, Open Sans voor body. Geen CPT nodig, gewoon 1 pagina.",
+      "expected_output": "Minimaal child theme (style.css + functions.php met alleen theme setup en Google Fonts). Setup script dat 1 pagina maakt met meerdere secties als _elementor_data, een eenvoudige header en footer template, en de Global Kit configureert. Geen CPT, geen shortcodes. Export + ZIP.",
+      "files": []
+    }
+  ]
+}

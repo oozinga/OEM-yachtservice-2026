@@ -1,0 +1,21 @@
+{
+  "eval_id": 3,
+  "eval_name": "restaurant-one-pager",
+  "prompt": "Ik wil een eenvoudige one-pager voor mijn restaurant. Scrollende pagina met secties: hero met achtergrondafbeelding, menu kaart (2 kolommen met gerechten en prijzen), over ons met foto, en een contactsectie met openingstijden en een formulier. Kleuren: donkergroen (#2D5016) en crème (#FFF8E7). Font: Cormorant Garamond voor koppen, Open Sans voor body. Geen CPT nodig, gewoon 1 pagina.",
+  "assertions": [
+    {"text": "style.css bevat alleen theme header (geen layout CSS)", "type": "structural"},
+    {"text": "functions.php bevat geen CPT registratie, custom templates, of shortcodes", "type": "structural"},
+    {"text": "functions.php laadt Google Fonts Cormorant Garamond en Open Sans via wp_enqueue_style", "type": "functional"},
+    {"text": "setup script configureert Global Kit met #2D5016 en #FFF8E7 kleuren", "type": "functional"},
+    {"text": "setup script maakt Header en Footer Theme Builder templates", "type": "functional"},
+    {"text": "setup script maakt slechts 1 pagina (one-pager)", "type": "functional"},
+    {"text": "Hero sectie heeft background_image met overlay", "type": "content"},
+    {"text": "Menu sectie heeft 2 kolommen (structure '20') met gerechten en prijzen", "type": "content"},
+    {"text": "Contact sectie heeft Elementor Form widget (niet CF7)", "type": "content"},
+    {"text": "Contact sectie heeft openingstijden (Icon List widget)", "type": "content"},
+    {"text": "Over ons sectie heeft een afbeelding naast tekst", "type": "content"},
+    {"text": "Setup script heeft idempotency guard", "type": "robustness"},
+    {"text": "Alle heading font-family referenties gebruiken 'Cormorant Garamond'", "type": "consistency"},
+    {"text": "Alle body font-family referenties gebruiken 'Open Sans'", "type": "consistency"}
+  ]
+}

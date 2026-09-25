@@ -1,0 +1,22 @@
+{
+  "eval_id": 2,
+  "eval_name": "fotograaf-portfolio-cpt",
+  "prompt": "Ik heb een portfolio website nodig voor een fotograaf. Design system: zwart (#000000) en wit (#FFFFFF) met accent oranje (#FF6B35). Font: Playfair Display voor koppen, Lato voor body (Google Fonts). Er moet een Custom Post Type 'portfolio_item' zijn met velden: categorie (text), camera (text), en locatie (text). Homepage met hero, portfolio grid (Posts widget), en about sectie. Plus een archive en single template voor de portfolio items. Alles in Elementor, geen custom PHP templates.",
+  "assertions": [
+    {"text": "style.css bevat alleen theme header (geen layout CSS)", "type": "structural"},
+    {"text": "functions.php bevat geen custom templates, nav walkers, of data functies", "type": "structural"},
+    {"text": "functions.php registreert CPT 'portfolio_item' met register_post_type", "type": "functional"},
+    {"text": "functions.php bevat meta box met 3 velden: categorie, camera, locatie", "type": "functional"},
+    {"text": "functions.php laadt Google Fonts Playfair Display en Lato via wp_enqueue_style", "type": "functional"},
+    {"text": "setup script configureert Global Kit met #000000, #FFFFFF en #FF6B35 kleuren", "type": "functional"},
+    {"text": "setup script maakt Header en Footer Theme Builder templates", "type": "functional"},
+    {"text": "setup script maakt Single Portfolio template met Dynamic Tags", "type": "functional"},
+    {"text": "setup script maakt Archive Portfolio template met Posts widget", "type": "functional"},
+    {"text": "Single template gebruikt __dynamic__ voor post-title en post-custom-field", "type": "content"},
+    {"text": "Archive template gebruikt Posts widget met posts_post_type portfolio_item", "type": "content"},
+    {"text": "Homepage heeft hero sectie, portfolio grid (Posts widget), en about sectie", "type": "content"},
+    {"text": "Setup script heeft idempotency guard", "type": "robustness"},
+    {"text": "Alle heading font-family referenties gebruiken 'Playfair Display'", "type": "consistency"},
+    {"text": "Alle body font-family referenties gebruiken 'Lato'", "type": "consistency"}
+  ]
+}

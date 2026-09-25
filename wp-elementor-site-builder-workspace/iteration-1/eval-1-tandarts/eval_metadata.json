@@ -1,0 +1,19 @@
+{
+  "eval_id": 1,
+  "eval_name": "tandarts-4-paginas",
+  "prompt": "Ik heb een ontwerp voor een tandartspraktijk website. De kleuren zijn donkerblauw (#1A3A5C) en mintgroen (#4ECDC4), het font is Inter via Google Fonts. De site heeft 4 pagina's: Home (hero met foto, 3 diensten cards, testimonial), Over ons (team foto's + tekst), Behandelingen (6 cards met icoon en beschrijving), en Contact (formulier + adresgegevens + Google Maps embed). Maak hier een complete Elementor WordPress site van die ik kan importeren.",
+  "assertions": [
+    {"text": "style.css bevat alleen theme header (geen layout CSS)", "type": "structural"},
+    {"text": "functions.php bevat geen custom templates, nav walkers, of data functies", "type": "structural"},
+    {"text": "functions.php laadt Google Fonts Inter via wp_enqueue_style", "type": "functional"},
+    {"text": "setup script configureert Global Kit met #1A3A5C en #4ECDC4 kleuren", "type": "functional"},
+    {"text": "setup script maakt Header en Footer Theme Builder templates", "type": "functional"},
+    {"text": "setup script maakt 4 pagina's: Home, Over ons, Behandelingen, Contact", "type": "functional"},
+    {"text": "Home pagina heeft hero sectie, 3 diensten cards (Icon Box), en testimonial", "type": "content"},
+    {"text": "Contact pagina heeft Elementor Form widget (niet CF7)", "type": "content"},
+    {"text": "Contact pagina heeft Google Maps embed", "type": "content"},
+    {"text": "Behandelingen pagina heeft 6 Icon Box cards", "type": "content"},
+    {"text": "Setup script heeft idempotency guard", "type": "robustness"},
+    {"text": "Alle font-family referenties gebruiken 'Inter'", "type": "consistency"}
+  ]
+}

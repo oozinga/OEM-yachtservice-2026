@@ -355,13 +355,12 @@ add_shortcode( 'oem_team_grid', function( $atts ) {
     $members = get_posts( $args );
     if ( empty( $members ) ) return '';
 
-    $html  = '<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px 24px;">';
-    $html .= '<style>';
+    $html  = '<style>';
     $html .= '@media(max-width:900px){.oem-tg{grid-template-columns:repeat(3,minmax(0,1fr))!important}}';
     $html .= '@media(max-width:640px){.oem-tg{grid-template-columns:repeat(2,minmax(0,1fr))!important}}';
     $html .= '.oem-tc:hover .oem-tp{opacity:.85}';
     $html .= '</style>';
-    $html  = '<div class="oem-tg" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px 24px;">';
+    $html .= '<div class="oem-tg" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px 24px;">';
 
     foreach ( $members as $m ) {
         $role = get_post_meta( $m->ID, '_oem_team_role', true );
